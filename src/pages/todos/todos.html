@@ -1,0 +1,89 @@
+<ion-content style="background-color: #efefef;">
+  <div class="wrap" style="background-image: url('assets/imgs/prototipo2.png'); background-size: cover;">
+    <div style="width: 100%; text-align: center; position: fixed; z-index: 10;">
+      <img src="assets/imgs/down-arrow.png" alt="" style="width: 40px;" (tap)="atras()">
+    </div>
+    <h5><strong>Gobierno Amigo</strong></h5>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-4 padding>
+          <div class="categoria" (tap)="ofertas()" style="background: linear-gradient(to right, #6dd5ed, #6dd5ed);">
+            <ion-icon class="button-icon" name="pricetag"></ion-icon>
+            <h2>Ofertas</h2>
+          </div>
+        </ion-col>
+        <ion-col col-4 padding>
+          <div class="categoria" (tap)="servicios()" style="background: linear-gradient(to right, #fdc830, #fdc830);">
+            <ion-icon class="button-icon" name="copy"></ion-icon>
+            <h2>Servicios</h2>
+          </div>
+        </ion-col>
+        <ion-col col-4 padding>
+          <div class="categoria" (tap)="incidencias()" style="background: linear-gradient(to left, #e53935, #e53935);">
+            <ion-icon class="button-icon" name="map"></ion-icon>
+            <h2>Cerca de ti</h2>
+          </div>
+        </ion-col>
+      </ion-row>
+      <br>
+      <h5><strong>
+          <ion-icon name="star" style="margin-right: 10px;"></ion-icon>Más visitados
+        </strong></h5>
+      <ion-row>
+        <ion-scroll scrollX="true" style="width: 100%; height: 220px;">
+          <div class="inner">
+            <ion-card *ngFor="let item of vistos" (click)="proveedor(item.idusuario, item.correo)" style="width: 130px; border-radius: 12px; position: relative;
+            display: inline-block;
+            text-align: center;">
+              <img class="imagen-menu" *ngIf="item.img_empresa"
+                src="https://g-kaipi.cloud/GobiernoAmigoMovil/public{{ item.img_empresa }}" />
+              <img class="imagen-menu" *ngIf="!item.img_empresa" src="assets/imgs/no-image-found.png" />
+              <ion-badge style="background-color: #fff;" class="texto-izquierda">
+                {{ item.registros }} visitas
+              </ion-badge>
+              <div class="centrado" style="text-align: left;">{{ item.nombre_negocio }}</div>
+            </ion-card>
+          </div>
+        </ion-scroll>
+        <h5><strong>
+            <ion-icon name="bookmark" style="margin-right: 10px;"></ion-icon>Recomendado
+          </strong></h5>
+
+        <ion-scroll scrollX="true" style="width: 100%; height: 220px;">
+          <div class="inner">
+            <ion-card *ngFor="let item of recomendados" (click)="proveedor(item.idusuario, item.correo)" style="width: 130px; border-radius: 12px; position: relative;
+                display: inline-block;
+                text-align: center;">
+              <img class="imagen-menu" *ngIf="item.img_empresa"
+                src="https://g-kaipi.cloud/GobiernoAmigoMovil/public{{ item.img_empresa }}" />
+              <img class="imagen-menu" *ngIf="!item.img_empresa" src="assets/imgs/no-image-found.png" />
+              <ion-badge style="background-color: #fff;" class="texto-izquierda">
+                {{ item.registros }} recomendados
+              </ion-badge>
+              <div class="centrado" style="text-align: left;">{{ item.nombre_negocio }}</div>
+            </ion-card>
+          </div>
+        </ion-scroll>
+
+        <h5><strong>
+            <ion-icon name="star" style="margin-right: 10px;"></ion-icon>Tus favoritos
+          </strong></h5>
+        <ion-scroll scrollX="true" style="width: 100%; height: 200px;">
+          <div class="inner2" style="width: max-content;">
+            <ion-card *ngFor="let item of favoritos" (click)="proveedor(item.idusuario, item.correo)" style="width: 200px; height: 180px; border-radius: 8px; position: relative;
+        display: inline-block;
+        text-align: center;">
+              <img class="imagen-menu-empresas"
+                src="https://g-kaipi.cloud/GobiernoAmigoMovil/public{{ item.img_empresa}}" />
+              <div class="texto-empresa">
+                <p><strong>{{ item.nombre_negocio }}</strong></p>
+                <p style="font-size: 10px; color: gray; text-align: left;">{{ item.categoria_nombre }}</p>
+              </div>
+            </ion-card>
+          </div>
+        </ion-scroll>
+        <br>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

@@ -1,0 +1,26 @@
+<ion-header no-border style="background-image: url('assets/imgs/prototipo2.png'); background-size: cover;">
+  <ion-navbar transparent style="margin-top: 20px;">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title style="font-weight: 400;">
+      <strong style="font-size: 17px; color: #fff;">Cotizar</strong><strong
+        style="font-weight: 300; font-size: 17px; color: #efefef;"> producto </strong>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+    <ion-label style="color: #0935AE;" stacked>Desea adquirir o cotizar</ion-label>
+  </ion-item>
+
+  <textarea [(ngModel)]="texto" rows="15" cols="50" style="margin-left: 11px; border-radius: 10px;" placeholder="Identifica el producto y/o servicio que requieres">
+  </textarea>
+
+  <div style="text-align: center;">
+    <button ion-button bock (click)="enviar()">Enviar al proveedor</button>
+  </div>
+
+</ion-content>

@@ -1,0 +1,25 @@
+<ion-header no-border style="background-image: url('assets/imgs/prototipo2.png'); background-size: cover;">
+  <ion-navbar transparent style="margin-top: 20px;">
+    <ion-title style="font-weight: 400;">
+      <strong style="font-size: 17px; color: #fff;">GobAmigo,</strong><strong
+        style="font-weight: 300; font-size: 17px; color: #efefef;"> Ofertas </strong>
+    </ion-title>
+  </ion-navbar>
+  <ion-searchbar placeholder="Buscar" ></ion-searchbar>
+</ion-header>
+
+
+<ion-content>
+
+  <ion-card *ngFor="let item of ofertas" (tap)="proveedor(item.idusuario, item.correo)">
+    <img style="width: 100%; height: 180px; object-fit: cover; filter: blur(2px)"  src="https://g-kaipi.cloud/GobiernoAmigoMovil/public{{ item.foto_oferta }}"/>
+    <div class="oferta"><h5>OFERTA</h5></div>
+    <div class="empresa_oferta"><h5>"{{ item.nombre_negocio }}"</h5></div>
+    <div class="card-title">{{ item.oferta }}</div>
+    <div class="card-subtitle">{{ item.asunto }}</div>
+    <!-- <div class="fecha_fin">{{ item.fecha_fin }}</div> -->
+    <div class="disponible">Disponible <h5>{{ item.dias }}</h5> días</div>
+
+  </ion-card>
+
+</ion-content>

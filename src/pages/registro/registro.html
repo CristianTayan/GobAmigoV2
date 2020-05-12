@@ -1,0 +1,167 @@
+<ion-header style="background-color: white;">
+
+  <ion-navbar transparent style="margin-top: 20px; background-color: white;">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title style="font-weight: 400;">
+      <strong style="font-size: 17px; color: #000;">GobAmigo,</strong><strong
+        style="font-weight: 300; font-size: 17px; color: #3a3939;"> Registro usuario </strong>
+    </ion-title>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content style="background-color: #fff;">
+  <div style="text-align: center; position: relative; ">
+    <br>
+    <img src="assets/imgs/cuenta.png" *ngIf="!foto" alt=""
+      style="width: 120px;  object-fit:scale-down; border-radius: 75px; border: 3px dashed #0C71D9;">
+    <img src="{{ foto }}" *ngIf="foto" alt=""
+      style="width: 120px; height: 120px; object-fit:cover; border-radius: 75px;">
+    <button class="upload" (tap)="getPictureGallery()" ion-fab mini>
+      <ion-icon style="color: #fff; margin-left: 4px;" name="camera"></ion-icon>
+    </button>
+  </div>
+  <!-- <button class="upload-photo" ion-button color="blanco"><ion-icon name="camera" style="color: gray;"></ion-icon>Foto</button>
+  <hr> -->
+  <div class="formulario">
+    <form [formGroup]="myForm" (ngSubmit)="registro()" novalidate>
+      <ion-list>
+        <ion-item>
+          <ion-label style="color: #0935AE;" stacked>Nombre</ion-label>
+          <ion-input [(ngModel)]='nombre' formControlName="nombre" type="text" placeholder="">
+          </ion-input>
+        </ion-item>
+        <ion-item *ngIf="myForm.get('nombre').errors && myForm.get('nombre').dirty" no-lines>
+          <p style="font-size: 10px;" color="danger" ion-text *ngIf="myForm.get('nombre').hasError('required')">Campo
+            requerido, ingrese su nombre</p>
+        </ion-item>
+
+        <ion-item>
+          <ion-label style="color: #0935AE;" stacked>Correo</ion-label>
+          <ion-input formControlName="correo" [(ngModel)]="correo" type="text" placeholder=""></ion-input>
+        </ion-item>
+        <ion-item *ngIf="myForm.get('correo').errors && myForm.get('correo').dirty" no-lines>
+          <p style="font-size: 10px;" color="danger" ion-text *ngIf="myForm.get('correo').hasError('required')">Campo
+            requerido, ingrese su correo</p>
+          <p style="font-size: 10px;" color="danger" ion-text *ngIf="myForm.get('correo').hasError('email')">No es un correo válido</p>
+        </ion-item>
+
+        <ion-item>
+          <ion-label style="color: #0935AE;" stacked>Cédula</ion-label>
+          <ion-input [(ngModel)]='identificacion' formControlName="identificacion" type="number" placeholder="">
+          </ion-input>
+        </ion-item>
+        <ion-item *ngIf="myForm.get('identificacion').errors && myForm.get('identificacion').dirty" no-lines>
+          <p style="font-size: 10px;" color="danger" ion-text *ngIf="myForm.get('identificacion').hasError('required')">
+            Campo requerido, ingrese su
+            CI</p>
+          <p style="font-size: 10px;" color="danger" ion-text *ngIf="myForm.get('identificacion').hasError('minlength')">
+            Mínimo 10 dígitos</p>
+          <!-- <p style="font-size: 10px;" color="danger" ion-text *ngIf="myForm.get('identificacion').hasError('maxlength')">
+            Maximo 13 dígitos</p> -->
+        </ion-item>
+
+        <ion-item>
+          <ion-label style="color: #083FB4;" stacked>Celular</ion-label>
+          <ion-input type="number" formControlName="movil" [(ngModel)]="movil" color="light"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="myForm.get('movil').errors && myForm.get('movil').dirty" no-lines>
+          <p style="font-size: 10px;" color="danger" ion-text *ngIf="myForm.get('movil').hasError('required')">
+            Campo requerido, ingrese su
+            numero celular</p>
+          <p style="font-size: 10px;" color="danger" ion-text *ngIf="myForm.get('movil').hasError('minlength')">
+            Mínimo 10 dígitos</p>
+          <p style="font-size: 10px;" color="danger" ion-text *ngIf="myForm.get('movil').hasError('maxlength')">
+            Maximo 10 dígitos</p>
+        </ion-item>
+
+        <ion-item>
+          <ion-label style="color: #0935AE;" stacked>¿Eres un proveedor?</ion-label>
+          <ion-select formControlName="proveedor" [(ngModel)]="proveedor">
+            <ion-option value="S">Sí</ion-option>
+            <ion-option value="N">No</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item *ngIf="myForm.get('proveedor').errors && myForm.get('proveedor').dirty" no-lines>
+          <p style="font-size: 10px;" color="danger" ion-text *ngIf="myForm.get('proveedor').hasError('required')">
+            Campo requerido, seleccione una opción</p>
+        </ion-item>
+        <br>
+        <ion-item>
+          <ion-label style="color: #0935AE;" stacked>Ciudad</ion-label>
+          <ion-select  formControlName="idciudad" [(ngModel)]="idciudad">
+            <ion-option *ngFor="let item of ciudades" value="{{ item.idcatalogo }}">{{ item.nombre }}</ion-option>
+            <!-- <ion-option value="2">Quito</ion-option>
+            <ion-option value="3">Santo Domingo</ion-option> -->
+          </ion-select>
+        </ion-item>
+        <br>
+        <ion-item>
+          <ion-label style="color: #083FB4;" stacked>Contraseña</ion-label>
+          <ion-input formControlName="acceso" type="password" [(ngModel)]="acceso" color="light"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="myForm.get('acceso').errors && myForm.get('acceso').dirty" no-lines>
+          <p style="font-size: 10px;" color="danger" ion-text *ngIf="myForm.get('acceso').hasError('required')">
+            Campo requerido, ingrese
+            una contraseña</p>
+          <p style="font-size: 10px;" color="danger" ion-text *ngIf="myForm.get('acceso').hasError('minlength')">
+            Contraseña de tener mínimo 8 caracteres</p>
+        </ion-item>
+      </ion-list>
+      <div padding>
+        <button ion-button block large
+          style="font-weight: 300;background-image: url(assets/imgs/prototipo2.png);  background-size: cover;"
+          type="submit" [disabled]="myForm.invalid">Guardar</button>
+      </div>
+    </form>
+
+
+      <!-- <ion-item>
+        <ion-label style="color: #083FB4;" stacked>Nombre</ion-label>
+        <ion-input type="text" [(ngModel)]="nombre" color="light"></ion-input>
+      </ion-item>
+      <br>
+      <ion-item>
+        <ion-label style="color: #083FB4;" stacked>Correo</ion-label>
+        <ion-input type="email" [(ngModel)]="correo" color="light"></ion-input>
+      </ion-item>
+      <br>
+      <ion-item>
+        <ion-label style="color: #083FB4;" stacked>Celular</ion-label>
+        <ion-input type="text" [(ngModel)]="movil" color="light"></ion-input>
+      </ion-item>
+      <br>
+      <ion-item>
+        <ion-label style="color: #0935AE;" stacked>Cédula/RUC</ion-label>
+        <ion-input [(ngModel)]='identificacion' type="number" placeholder="">
+        </ion-input>
+      </ion-item>
+      <br>
+      <ion-item>
+        <ion-label style="color: #0935AE;" stacked>¿Eres un proveedor?</ion-label>
+        <ion-select [(ngModel)]="proveedor">
+          <ion-option value="S">Sí</ion-option>
+          <ion-option value="N">No</ion-option>
+        </ion-select>
+      </ion-item>
+      <br>
+      <ion-item>
+        <ion-label style="color: #083FB4;" stacked>Contraseña</ion-label>
+        <ion-input type="password" [(ngModel)]="acceso" color="light"></ion-input>
+      </ion-item>
+      <br>
+      <div style="text-align: center;">
+        <button
+          style="text-transform: none;background-image: url(assets/imgs/prototipo2.png);  background-size: cover; font-weight: 300;margin-left: 9px;"
+          ion-button large block color="primary" (tap)="registro()">Registrarse</button>
+      </div> -->
+      <br>
+    <!-- </form> -->
+  </div>
+
+
+</ion-content>

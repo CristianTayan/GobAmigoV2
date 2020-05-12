@@ -1,0 +1,59 @@
+<ion-menu [content]="contenido">
+  <ion-header no-border style="background-color: #fff;">
+
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item style="padding-left: 25px;margin-top: 30px; border-bottom: 1px solid #efefef;">
+        <img *ngIf="!foto" src="assets/imgs/cuenta.png" style="width: 80px; height: 80px;border-radius: 40px; ">
+        <img *ngIf="foto" src="https://g-kaipi.cloud/GobiernoAmigoMovil/public{{ foto }}" style="width: 80px; height: 80px;border-radius: 40px; object-fit: cover; ">
+        <!-- </ion-avatar> -->
+        <p style=" color: #1a237e; margin-top: 12px; font-size: 1.3em;">{{ nombre }}</p>
+        <p style="font-size: 0.8em; color: gray;">{{ correo }}</p>
+      </ion-item>
+
+      <ion-list style="padding-left: 20px;">
+        <button ion-item (click)="openPage(rootPage)" no-lines>
+          Principal
+        </button>
+        <button ion-item (click)="openPage(perfil)" no-lines>
+          Perfil
+        </button>
+        <button ion-item (click)="openPage(incidencias)" no-lines>
+          Incidencias
+        </button>
+        <button ion-item (click)="openPage(seguimiento)" no-lines>
+          Seguimiento
+        </button>
+        <button ion-item (click)="openPage(favoritos)" no-lines>
+          Favoritos 
+        </button>
+        <button ion-item *ngIf="proveedor == 'S'" (click)="openPage(soy_empresa)" no-lines>
+          Soy empresa 
+        </button>
+        <button *ngIf="proveedor == 'S'" ion-item (click)="openPage(mis_ofertas)" no-lines>
+          Mis ofertas 
+        </button>
+        <button ion-item (click)="openPage(sobre_gob_amigo)" no-lines>
+          Sobre GobAmigo 
+        </button>
+      </ion-list>
+      <!-- <ion-item (tap)="openPage(rootPage)"  no-lines style="margin-bottom: 0px; margin-top: 0px;"><p style="color:rgb(104, 105, 109);"><ion-icon name="home" padding></ion-icon>Principal</p></ion-item> -->
+      <!-- <ion-item  (tap)="openPage(favoritos)"  no-lines><p style="color:rgb(118, 121, 129);"><ion-icon name="heart" padding></ion-icon>Mis favoritos</p></ion-item> -->
+    </ion-list>
+    <!-- <br>
+    <button style="margin-left: 25px;" ion-item (click)="cerrar_sesion()" no-lines>
+      <ion-icon name="log-out" style="color: black;margin-right: 10px;"></ion-icon> Cerrar sesion
+    </button> -->
+  </ion-content>
+  <ion-footer no-border>
+    <button style="margin-left: 25px;" ion-item (click)="cerrar_sesion()" no-lines>
+      <ion-icon name="log-out" style="color: black;margin-right: 10px;"></ion-icon> Cerrar sesion
+    </button>
+  </ion-footer>
+  
+</ion-menu>
+
+
+
+<ion-nav [root]="rootPage" #contenido></ion-nav>

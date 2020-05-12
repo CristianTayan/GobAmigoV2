@@ -1,0 +1,51 @@
+<ion-header no-border style="background-image: url('assets/imgs/prototipo2.png'); background-size: cover;">
+  <ion-navbar transparent style="margin-top: 20px;">
+    <button ion-button menuToggle>
+      <ion-icon  name="menu"></ion-icon>
+    </button>
+    <ion-title style="font-weight: 400;">
+      <strong style="font-size: 17px; color: #fff;">Crear nueva</strong><strong
+        style="font-weight: 300; font-size: 17px; color: #efefef;"> oferta </strong>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <div id="img_empresa">
+    <br><br>
+    <img src="assets/imgs/foto_empresa.png" *ngIf="!img_oferta" alt=""
+      style="width: 120px; object-fit:scale-down; border-radius: 5px; border: 3px dashed #0C71D9;">
+    <img src="{{ img_oferta }}" *ngIf="img_oferta" alt=""
+      style="width: 120px; object-fit:cover; border-radius: 5px;">
+    <button class="upload" (tap)="getPictureGallery()" ion-fab mini>
+      <ion-icon style="color: #fff;" name="camera"></ion-icon>
+    </button>
+  </div>
+  <br><br>
+  <form [formGroup]="myForm" (ngSubmit)="crear_oferta()" novalidate>
+    <ion-list>
+      <ion-item>
+        <ion-label style="color: #0935AE;" stacked>Nombre de la oferta</ion-label>
+        <ion-input formControlName="oferta" [(ngModel)]="oferta" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label style="color: #0935AE;" stacked>Oferta</ion-label>
+        <ion-input [(ngModel)]='asunto' formControlName="asunto" type="text">
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label style="color: #0935AE;" stacked>Fecha de inicio de oferta</ion-label>
+        <ion-datetime formControlName="fecha_inicio" displayFormat="DD/MM/YYYY" [(ngModel)]="fecha_inicio"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label style="color: #0935AE;" stacked>Fecha de fin de oferta</ion-label>
+        <ion-datetime formControlName="fecha_final" displayFormat="DD/MM/YYYY" [(ngModel)]="fecha_final"></ion-datetime>
+      </ion-item>
+    </ion-list>
+    <div padding>
+      <button ion-button block large style="font-weight: 300; text-transform: none;background-image: url(assets/imgs/prototipo2.png);  background-size: cover;" type="submit"
+        [disabled]="myForm.invalid">Crear oferta</button>
+    </div>
+  </form>
+</ion-content>

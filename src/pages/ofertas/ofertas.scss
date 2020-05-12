@@ -1,0 +1,72 @@
+page-ofertas {
+    @import url("https://fonts.googleapis.com/css2?family=Amatic+SC&family=Poppins:wght@600&display=swap");
+    ion-card {
+        position: relative;
+        text-align: center;
+    }
+
+    .card-title {
+        font-family: "Poppins", sans-serif;
+        position: absolute;
+        top: 42%;
+        font-size: 1em;
+        width: 100%;
+        font-weight: bold;
+        color: #fff;
+    }
+
+    .card-subtitle {
+        font-size: 1em;
+        position: absolute;
+        bottom: 5px;
+        // width: 100%;
+        left: 10px;
+        color: #fff;
+    }
+
+    .oferta {
+        width: 100px;
+        background-color: #fff;
+        position: absolute;
+        top: 5px;
+        left: 0px;
+    }
+
+    .oferta h5 {
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        font-size: 15px;
+        color: #f50057;
+    }
+    .empresa_oferta {
+        width: 100%;
+        position: absolute;
+        top: 40px;
+        left: 0px;
+    }
+
+    .empresa_oferta h5 {
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        font-size: 20px;
+        color: #fff;
+    }
+    .disponible {
+        // width: 100%;
+        border-radius: 35px;
+        padding: 10px 10px 10px 10px;
+        background-color: #f50057;
+        position: absolute;
+        top: 5%;
+        right: 5px;
+        color: #fff;
+        font-size: 9px;
+    }
+
+    .disponible h5 {
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        font-size: 15px;
+        color: #fff;
+    }
+}

@@ -1,0 +1,28 @@
+<ion-header style="background-color: white;">
+
+  <ion-navbar transparent style="margin-top: 20px; background-color: white;">
+    <ion-title style="font-weight: 400;">
+      <strong style="font-size: 17px; color: #000;">Actualizar foto</strong><strong
+        style="font-weight: 300; font-size: 17px; color: #3a3939;"> de empresa </strong>
+    </ion-title>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <br><br><br><br>
+  <div id="img_empresa">
+    <img src="assets/imgs/foto_empresa.png" *ngIf="!img_empresa" alt=""
+      style="width: 200px; object-fit:scale-down; border-radius: 100px; border: 3px dashed #0C71D9;">
+    <img src="{{ img_empresa }}" *ngIf="img_empresa" alt=""
+      style=" object-fit:cover; border-radius: 100px;">
+    <button class="upload" (tap)="getPictureGallery()" ion-fab mini>
+      <ion-icon style="color: #fff;" name="camera"></ion-icon>
+    </button>
+  </div>
+  <br>
+  <br>
+  <button ion-button block (click)="actualizar_foto_empresa()">Actualizar foto</button>
+</ion-content>

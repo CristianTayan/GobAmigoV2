@@ -1,0 +1,72 @@
+<ion-header no-border style="background-image: url('assets/imgs/prototipo2.png'); background-size: cover;">
+  <ion-navbar transparent style="margin-top: 20px;">
+    <ion-title style="font-weight: 400;">
+      <strong style="font-size: 17px; color: #fff;">AGREGAR INCIDENCIA</strong><strong
+        style="font-weight: 300; font-size: 17px; color: #efefef;"></strong>
+    </ion-title>
+  </ion-navbar>
+  <!-- <ion-searchbar placeholder="Buscar" ></ion-searchbar> -->
+</ion-header>
+
+
+<ion-content style="background-image: url('assets/imgs/prototipo2.png'); background-size: cover;">
+  <!-- <div class="loader" *ngIf="loading" style="
+  top: 50%;
+  margin-top: -50px; z-index: 10;">Loading...</div> -->
+  <ion-list style="text-align: center;margin-right: 8%; margin-left: 8%;">
+    <img src="{{path}}" style="width: 100px; margin-top: 20px;">
+    <br><br>
+    <div style="text-align: left">
+      <ion-item class="input" no-lines>
+        <ion-label>Tipo:</ion-label>
+        <ion-select [(ngModel)]="tipo_denuncia">
+          <ion-option value="Iniciativa">Iniciativa</ion-option>
+          <ion-option value="Sugerencia">Sugerencia</ion-option>
+          <ion-option value="Denuncia">Denuncia</ion-option>
+          <ion-option value="Queja">Queja</ion-option>
+        </ion-select>
+      </ion-item>
+      <br>
+      <ion-item class="input" no-lines>
+        <ion-label>Incidencia:</ion-label>
+        <ion-select [(ngModel)]="denuncia">
+          <ion-option *ngFor="let item of categorias" value="{{ item.idcategoria }}">{{ item.nombre }}</ion-option>
+        </ion-select>
+      </ion-item>
+      <br>
+      <ion-item class="input" no-lines>
+        <ion-textarea style="height: 120px;" [(ngModel)]="detalle_denuncia" placeholder="Registre su incidencia">
+        </ion-textarea>
+      </ion-item>
+      <br><br>
+      <ion-label style="color: white;font-size: 1em">Fotos:</ion-label>
+    </div>
+    <div style="text-align: center;">
+      <img *ngIf="!clickedImagePath" style="width: 200px; height: 150px; object-fit: cover; border: 1px solid white; border-radius: 5px;"  />
+      <img *ngIf="clickedImagePath" style="width: 200px; height: 150px; object-fit: cover; border-radius: 5px" src="{{clickedImagePath}}" />
+    </div>
+    <div style="text-align: center">
+      <ion-row>
+        <ion-col col-6 >
+          <img src="assets/imgs/camera_icon.png" (click)="clickImage()" style="width: 50px">
+        </ion-col>
+        <ion-col col-6 >
+          <img src="assets/imgs/addphoto.png" (click)="getPictureGallery()" style="width: 50px">
+        </ion-col>
+      </ion-row>
+    </div>
+    
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6>
+          <button ion-button block outline color="light" style="text-transform: none;" class="input" (click)="goBack()">Cancelar</button>
+        </ion-col>
+        <ion-col col-6>
+          <button ion-button block color="light" (click)="guardar()" style="background-color: #03A9F4; text-transform: none; color: white;" class="input">Enviar</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    
+  </ion-list>
+
+</ion-content>

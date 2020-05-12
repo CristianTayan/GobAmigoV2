@@ -1,0 +1,29 @@
+page-favoritos {
+    .searchbar .searchbar-input{
+        border-radius: 5px;
+        background-color: #fff;
+    }
+
+    .lista {
+       margin-left: 5px;
+       margin-right: 5px;
+       width: 100%;
+    }
+    ion-icon{
+        color: white;
+    }
+
+    .item-md{
+        padding-left: 6px;
+    }
+    .item-md ion-thumbnail{
+        min-width: 100px;
+    }
+    .item-md ion-thumbnail img {
+        width: 100px;
+        height: 100px;
+    }
+    .item-md p {
+        font-size: 1.8;
+    }
+}

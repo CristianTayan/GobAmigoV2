@@ -1,0 +1,35 @@
+<ion-header no-border style="background-image: url('assets/imgs/prototipo2.png'); background-size: cover;">
+  <ion-navbar transparent style="margin-top: 20px;">
+    <button ion-button menuToggle>
+      <ion-icon  name="menu"></ion-icon>
+    </button>
+    <ion-title style="font-weight: 400;">
+      <strong style="font-size: 17px; color: #fff;">Mis</strong><strong
+        style="font-weight: 300; font-size: 17px; color: #efefef;"> ofertas </strong>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-fab bottom right >
+    <button ion-fab  (tap)="crear_oferta()"><ion-icon name="add"></ion-icon></button>
+    <!-- <button ion-fab   (tap)="limite_oferta()"><ion-icon name="add"></ion-icon></button> -->
+  </ion-fab>
+  
+
+  <div>
+    <ion-list style="margin-top: 10px;">
+      <ion-item style="border-radius: 10px; position: relative;margin-bottom: 10px; margin-left: 1.5%; width: 97%; border: 1px dashed gray;" *ngFor="let item of ofertas" (tap)="editar_oferta(item.idoferta)">
+        <ion-thumbnail item-start>
+          <img src="https://g-kaipi.cloud/GobiernoAmigoMovil/public{{ item.foto_oferta }}" style="border-radius: 10px; object-fit: cover;">
+        </ion-thumbnail>
+        <h2 style="font-size: 20px; vertical-align: text-top;"><strong>{{ item.oferta }}</strong></h2>
+        <p style="color: #0935AE;">{{ item.asunto }}</p>
+        <p><strong>Fecha de expiración: </strong>{{ item.fecha_fin }} </p>
+        <p><strong>Días restantes: </strong> <strong style="color:#0935AE ; font-size: 15px;">{{ item.dias }} </strong></p>
+      </ion-item>
+    </ion-list>
+  </div>
+
+</ion-content>

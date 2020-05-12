@@ -1,0 +1,38 @@
+<ion-header no-border >
+  <ion-navbar transparent style="margin-top: 20px;">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title style="font-weight: 400;">
+      <strong style="font-size: 17px; color: #fff;">INCIDENCIAS</strong><strong
+        style="font-weight: 300; font-size: 17px; color: #efefef;"> </strong>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content style="background-image: url('assets/imgs/prototipo2.png'); background-size: cover;">
+  <div class="menu">
+      <br>
+      <ion-grid style="text-align: center">
+          <ion-row>
+              <ion-col col-4 *ngFor="let item of iconos">
+                  <img style="width: 80%" src="{{item.path}}" alt="" (click)="DenunciaPage(item.idtipo, item.titulo, item.path)">
+                  <p>{{item.titulo}}</p>
+              </ion-col>
+          </ion-row>
+      </ion-grid>
+  </div>
+  <ion-grid style="text-align: center">
+      <ion-row>
+          <ion-col col-4>
+          </ion-col>
+          <ion-col col-4>
+          </ion-col>
+          <ion-col col-4>
+              <img style="width: 80%" src="assets/imgs/cancelar.png" alt="" (click)="cancelar()">
+              <p>CANCELAR</p>
+          </ion-col>
+      </ion-row>
+  </ion-grid>
+
+</ion-content>

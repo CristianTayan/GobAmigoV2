@@ -1,0 +1,62 @@
+
+<ion-content padding style="position: relative;">
+  <br>
+  <div *ngIf="isLoading" style="position: absolute; top: 30%; z-index: 999; width: 96%; text-align: center;">
+    <div class="loader">Loading...</div>
+  </div>
+  
+  <div padding>
+    <br>
+    <div style="width: 100%; text-align: center;">
+      <img src="assets/imgs/logoMunicipalidad.png" alt="" width="180px">
+    </div>
+    <div style="margin-top: 20px;">
+      <h1>Bienvenido,</h1>
+      <h6>Inicia sesión para continuar</h6>
+    </div>
+  </div>
+  <br>
+  <div class="formulario">
+    <form [formGroup]="myForm" (ngSubmit)="login()" novalidate>
+      <ion-list>
+        <ion-item>
+          <ion-label style="color: #333333; font-weight: 900;" stacked>Correo</ion-label>
+          <ion-input formControlName="correo" [(ngModel)]="correo" type="text" placeholder=""></ion-input>
+        </ion-item>
+        <ion-item *ngIf="myForm.get('correo').errors && myForm.get('correo').dirty" no-lines>
+          <p style="font-size: 10px;" color="danger" ion-text *ngIf="myForm.get('correo').hasError('required')">Campo
+            requerido, ingrese su correo</p>
+          <p style="font-size: 10px;" color="danger" ion-text *ngIf="myForm.get('correo').hasError('email')">No un correo válido</p>
+        </ion-item>
+        <br>
+        <ion-item>
+          <ion-label style="color: #333333; font-weight: 900;" stacked>Contraseña</ion-label>
+          <ion-input formControlName="acceso" [(ngModel)]="acceso" type="password" placeholder=""></ion-input>
+        </ion-item>
+        <ion-item *ngIf="myForm.get('acceso').errors && myForm.get('acceso').dirty" no-lines>
+          <p style="font-size: 10px;" color="danger" ion-text *ngIf="myForm.get('acceso').hasError('required')">Campo
+            requerido, ingrese contraseña</p>
+        </ion-item>
+        <br>
+      </ion-list>
+      <div padding>
+        <button ion-button block large style="font-weight: 300; text-transform: none;background-image: url(assets/imgs/prototipo2.png);  background-size: cover;" type="submit"
+          [disabled]="myForm.invalid">Login</button>
+      </div>
+      <div style="width:96%; text-align: center;">
+        <h6 (tap)="registro()">Usuario nuevo? <strong style="color: #0935AE;"> Registrate</strong></h6>
+      </div>
+    </form>
+  </div>
+  <hr style="margin-top: 20px; margin-left: 4%; width: 92%;">
+  <ion-grid padding>
+    <ion-row>
+      <!-- <ion-col col-6>
+        <button ion-button block style="text-transform: none; background-color: #d62d20;border-radius: 5px;"(tap)="LoginGoogle()"><ion-icon name="logo-google" style="margin-right: 10px;"></ion-icon> Google</button>
+      </ion-col> -->
+      <ion-col col-12>
+        <button ion-button block style="text-transform: none; background-color: #3b5998; border-radius: 5px;" (tap)="facebookLogin()" ><ion-icon name="logo-facebook" style="margin-right: 10px;"></ion-icon> Facebook</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

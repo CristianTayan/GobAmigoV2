@@ -1,0 +1,41 @@
+page-editar-perfil-usuario {
+    ion-icon{
+        margin-right: 5px;
+        color:#006cc6 ;
+    }
+    .upload-photo{
+        border-radius: 10px;
+        position: relative;
+        top: 40%;
+        left: 41%;
+        color: #bdbdbd;
+        text-transform: none;
+    }
+    .upload{
+        position: absolute;
+        top: 55%;
+        left: 55%;
+    }
+
+
+    img{
+        position: relative;
+
+    }
+    .formulario{
+        padding: 5px;
+        margin-top: 30px;
+        margin-left: 2%;
+        width: 92%;
+        border-radius: 10px;
+    }
+
+    ion-item{
+        background-color: transparent !important;
+    }
+    
+    
+    button ion-icon{
+        color: #000;
+    }
+}

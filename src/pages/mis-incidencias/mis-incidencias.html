@@ -1,0 +1,64 @@
+<ion-header no-border style="background-image: url('assets/imgs/prototipo2.png'); background-size: cover;">
+  <ion-navbar transparent style="margin-top: 20px;">
+    <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title style="font-weight: 400;">
+      <strong style="font-size: 17px; color: #fff;">SEGUIMIENTO DE INCIDENCIAS</strong><strong
+        style="font-weight: 300; font-size: 17px; color: #efefef;"></strong>
+    </ion-title>
+  </ion-navbar>
+  <!-- <ion-searchbar placeholder="Buscar" ></ion-searchbar> -->
+</ion-header>
+
+
+<ion-content style="background-image: url('assets/imgs/prototipo2.png'); background-size: cover;">
+  <!-- <div class="loader" *ngIf="loading" style="
+  top: 50%;
+  margin-top: -50px;">Loading...</div> -->
+  <ion-list>
+      <ion-card *ngIf="count_denuncias == 1" style="border-radius: 5px; background-color: #e8eaf6;">
+          <ion-item style=" background-color: #e8eaf6;">
+              <h2 style="color:#042c6c"><strong>Aun no ha registrado denuncias</strong></h2>
+          </ion-item>            
+      </ion-card>
+
+      <ion-card *ngFor="let c of denuncias" style="border-radius: 5px; background-color: #e8eaf6; position: relative;" (click)="getDenuncia(c.id_denuncia, c.coordenada_x_denuncia, c.coordenada_y_denuncia)">
+          
+          <ion-item style=" background-color: #e8eaf6; position: relative;">
+              <h3 style="color: #f4511e;" *ngIf="c.tipo_for_rest_external_denuncia == 'QUEJA'">
+                  <strong>{{ c.tipo_for_rest_external_denuncia }}</strong></h3>
+              <h3 style="color: #d50000;" *ngIf="c.tipo_for_rest_external_denuncia == 'DENUNCIA'">
+                  <strong>{{ c.tipo_for_rest_external_denuncia }}</strong></h3>
+              <h3 style="color: #388e3c;" *ngIf="c.tipo_for_rest_external_denuncia == 'Sugerencia'">
+                  <strong>{{ c.tipo_for_rest_external_denuncia }}</strong></h3>
+              <h3 style="color: #0277bd; " *ngIf="c.tipo_for_rest_external_denuncia == 'Iniciativa'">
+                  <strong>{{ c.tipo_for_rest_external_denuncia }}</strong></h3>
+              <h2 style="color:#042c6c"><strong>{{ c.nombre_tipo }}</strong></h2>
+              <ion-badge>{{ c.nombre_categoria }}</ion-badge>
+              <p style="margin-top: 5px;"><strong>Incidencia:</strong> {{ c.detalle_denuncia }}</p>
+              
+          </ion-item>
+          <div style="width: 48px; position: absolute; left: 82%; top: 5%;">
+              <qr-code value="Id_incidencia: {{c.id_denuncia}}\nCI Usuario: {{c.identificacion_usuario_denuncia}}\nTipo incidencia: {{c.nombre_tipo}}\nFecha de creacion: {{c.fecha_denuncia_string}}" background='#e8eaf6' size='48'></qr-code>
+          </div>
+
+          <ion-row>
+              <ion-col>
+                  <img *ngIf="c.estado_denuncia == 'E'" src="assets/imgs/enviado_icon.png" style="width: 20px;">
+                  <img *ngIf="c.estado_denuncia == 'A'" src="assets/imgs/asignado_icon.png" style="width: 20px;">
+                  <img *ngIf="c.estado_denuncia == 'F'" src="assets/imgs/finalizado_icon.png" style="width: 20px;">
+                  
+              </ion-col>
+              <ion-col>
+              </ion-col>
+              <ion-col align-self-center text-right>
+                  <ion-note style="color: gray; font-size: 0.7em;">
+                      {{ c.fecha_creacion_denuncia_string }}
+                  </ion-note>
+              </ion-col>
+          </ion-row>
+
+      </ion-card>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,42 @@
+<ion-header no-border>
+  <ion-navbar transparent style="margin-top: 20px;">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title style="font-weight: 400;">
+      <strong style="font-size: 17px; color: #fff;">Sobre</strong><strong
+        style="font-weight: 300; font-size: 17px; color: #efefef;"> Gobierno Amigo </strong>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding style="background-image: url('assets/imgs/prototipo2.png'); background-size: cover;">
+  <div style="width: 100; text-align: center;">
+    <br><br><br>
+    <h5 style="color: white;"><strong>GOBIERNO AMIGO</strong></h5>
+  </div>
+  <p style="color: white;">Gobierno Amigo es una aplicación móvil que facilita la interacción entre la ciudadanía y el
+    gobierno municipal con la finalidad de promover y reactivar la economía y los servicios locales.
+  </p>
+  <br>
+  <p style="color: white;">En colaboración con <br>
+    Gad Municipal de Santo Domingo. <br>
+  </p>
+  <div style="width: 100%; text-align: center;">
+    <p style="color: white;">Idea Creativa <br>
+      G-K <br>
+      Comunidad de emprendimiento y tecnología</p>
+  </div>
+  
+  <br><br>
+  <div style="width: 100; text-align: center;">
+    <h5 style="color: white;"><strong>Compartela con tus conocidos</strong></h5>
+    <button ion-button style="background-color: #25d366;" (click)="whatsappShare()" round>
+      <ion-icon name="logo-whatsapp" style="margin-right: 10px;"></ion-icon> Whatsapp
+    </button>
+    <button ion-button style="background-color: #34b7f1;" (click)="Share()" round>
+      <ion-icon name="logo-facebook" style="margin-right: 10px;"></ion-icon> Facebook
+    </button>
+  </div>
+</ion-content>

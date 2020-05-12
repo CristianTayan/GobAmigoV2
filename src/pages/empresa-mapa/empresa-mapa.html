@@ -1,0 +1,36 @@
+<ion-header  style="background-color: white;">
+
+  <ion-navbar transparent style="margin-top: 20px; background-color: white;">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+  </button>
+  <ion-title style="font-weight: 400;">
+    <strong style="font-size: 17px; color: #000;">GobAmigo,</strong><strong
+      style="font-weight: 300; font-size: 17px; color: #3a3939;"> Ubicación empresa </strong>
+  </ion-title>
+  
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content style="background-color: white;">
+  <div class="fondo">
+  </div>
+  <div style="margin-top: -120px; z-index: 0;">
+    <div class="titulo">
+      <br><br>
+      <h2><strong>¿Es esta la ubicación de tu empresa?</strong></h2>
+      <h4>Si no la es arrastra el mapa hasta la ubicación de tu empresa</h4>
+    </div>
+  </div>
+  <div #mapa id="mapa">
+    <!-- <img src="assets/imgs/marker-blue.png" id="centerMarkerImg"> -->
+    <!-- <button ion-fab id="centerMarkerImg" style="background-image: url(assets/imgs/prototipo2.png);  background-size: cover;" (click)="getLocation()"><ion-icon style="color: #fff;" name="locate"></ion-icon></button> -->
+  </div><br>
+  <!-- <div class="ubicacion">
+    <p ><ion-icon name="pin"  style="margin-right: 5px; color: #0935AE;"></ion-icon>Direccion: {{ geoAddress }}</p>
+   
+  </div> -->
+  <!-- <button ion-button class="btn"  block color="primary" (click)="getLocation()" >Buscar mi ubicacion</button> -->
+  <button ion-button class="btn" block large style="font-weight: 300; background-image: url(assets/imgs/prototipo2.png);  background-size: cover;" color="primary" (click)="pasar_datos(latitud, longitud)" >Ok, es la ubicación de mi empresa</button>
+</ion-content>

@@ -1,0 +1,77 @@
+page-proveedor {
+    ion-header {
+      font-family: 'Nanunito', sans-serif;
+        .toolbar {
+          position: absolute;
+      
+          .toolbar-background {
+            background: transparent;
+          }
+          .toolbar-title {
+            color: white;
+          }
+        }
+      }
+    img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        filter: brightness(0.8);
+        box-shadow: 0px 1px 5px 0px rgba(133, 128, 133, 1);
+    }
+
+    .item-md{
+      padding-left: 0px;
+    }
+    ion-title{
+      text-transform: uppercase;
+    }
+    .description-card {
+        font-family: 'Nanunito', sans-serif;  
+        width: 100%;
+        background-color: #fff;
+        margin-top: -30px;
+        position: relative;
+        box-shadow: 0px 1px 5px 0px rgba(133, 128, 133, 1);
+        border-radius: 25px 25px 0px 0px;
+    }
+    .float-button{
+        position: absolute;
+        top: -25px;
+        right: 60px;
+    }
+    .float-button-2{
+      position: absolute;
+      top: -25px;
+      right: 10px;
+  }
+
+    .send-mensaje{
+      font-family: 'Nanunito', sans-serif; 
+      background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0px 1px 5px 0px rgba(133,128,133,1);
+    }
+    .back-button-icon{
+        color: white;
+    }
+
+    p{
+      color: #666;
+    }
+
+    .horario{
+      position: absolute;
+      bottom: 25px;
+      left: 10px;
+      color: #fff;
+    }
+    // ion-col{
+    //   padding: 0px;
+    // }
+
+    h5{
+      text-transform: uppercase;
+    }
+    
+}

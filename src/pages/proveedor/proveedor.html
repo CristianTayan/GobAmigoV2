@@ -1,0 +1,110 @@
+<ion-header no-border>
+
+  <ion-navbar transparent style="margin-top: 20px;">
+    <ion-title *ngFor="let item of proveedor"><strong>{{ item.nombre_negocio }}</strong></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content style="background-color: #eeeeee;" *ngFor="let item of proveedor">
+  <div
+    style="background: linear-gradient(to bottom, #efefef, #ff4b2b); width: 100%; height: 100px; border-radius: 0px 0px 50% 50%; z-index: -1;">
+  </div>
+  <div style="margin-top: -110px; margin-left: 0px">
+    <ion-card style=" width: 100%; margin-left: 0px; position: relative;">
+      <img src="https://www.g-kaipi.cloud/GobiernoAmigoMovil/public{{ item.img_empresa }}" alt="">
+      <!-- <ion-icon style="position: absolute; top: 40px; right: 10px; color: white; font-size: 30px;" name="bookmark"></ion-icon> -->
+      <p class="horario">Abierto {{ item.dias_atencion }} de {{ item.hora_apertura }} - {{ item.hora_cierre }} </p>
+    </ion-card>
+  </div>
+  <div class="description-card" padding>
+    <h5 style="color: #000; margin-top: 10px;"><strong>{{ item.nombre_negocio }}</strong></h5>
+    <ion-badge  *ngIf="item.a_domicilio == 'S'" >Si realiza entregas a domicilio</ion-badge>
+    <!-- <h6 style="color: #1a237e; font-weight: 900;" *ngIf="item.a_domicilio == 'S' ">Hace entregas a domicilio</h6> -->
+    <p style="color: #666;">{{ item.slogan }}</p>
+
+    <button *ngIf="es_favorito == 'no'" class="float-button" (tap)="like()" ion-fab mini color="light">
+      <ion-icon style="color: black;"  name="heart-outline"></ion-icon>
+    </button>
+    <button *ngIf="es_favorito == 'si'" color="danger" (tap)="dislike()" class="float-button" ion-fab mini>
+      <ion-icon  name="heart-outline"></ion-icon>
+    </button>
+
+    <button *ngIf="es_recomendado == 'No'" class="float-button-2" (tap)="agregar_recomendado()" ion-fab mini color="light">
+      <ion-icon style="color: black;"  name="bookmark"></ion-icon>
+    </button>
+    <button *ngIf="es_recomendado == 'Si'" color="secondary"  class="float-button-2" ion-fab mini>
+      <ion-icon  name="bookmark"></ion-icon>
+    </button>
+    <br>
+    <div class="send-mensaje" padding>
+      <ion-row>
+        <ion-col col-12>
+          <ion-icon name="logo-whatsapp" style="margin-right: 5px; color: #00BFA5 "></ion-icon> Contactarse con el
+          proveedor
+        </ion-col>
+        <ion-col col-9>
+          <ion-item>
+            <ion-input type="text" placeholder="Escribe tu mensaje" [(ngModel)]="mensaje"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col col-3 style="text-align: right;">
+          <button ion-button style="text-transform: none; background-color: #00BFA5;" (tap)="sendmessage(item.movil)">
+            Enviar</button>
+        </ion-col>
+      </ion-row>
+    </div>
+    <br>
+    <ion-row>
+      <ion-col col-3 style="text-align: left; padding: 0px;">
+        <!-- <ion-icon name="cart" style="margin-top: 10px; color: #0935AE;"></ion-icon> -->
+        <p><strong>Productos:</strong></p>
+      </ion-col>
+      <ion-col col-9 style="text-align: left; padding: 0px;">
+        <p>{{ item.productos }}</p>
+      </ion-col>
+      <ion-col col-3 style="text-align: left; padding: 0px;">
+        <!-- <ion-icon name="person" style="margin-top: 10px; color: #0935AE;"></ion-icon> -->
+        <p><strong>Propietario:</strong></p>
+
+      </ion-col>
+      <ion-col col-9 style="text-align: left;padding: 0px;">
+        <p>{{ item.nombre }}</p>
+      </ion-col>
+
+      <ion-col col-3 style="text-align: left;padding: 0px;">
+        <!-- <ion-icon name="call" style="margin-top: 10px; color: #0935AE;"></ion-icon> -->
+        <p><strong>Celular:</strong></p>
+
+      </ion-col>
+      <ion-col col-9 style="text-align: left;padding: 0px;">
+        <p>{{ item.movil }}</p>
+      </ion-col>
+
+      <ion-col col-3 style="text-align: left;padding: 0px;">
+        <!-- <ion-icon name="mail" style="margin-top: 10px; color: #0935AE;"></ion-icon> -->
+        <p><strong>Correo:</strong></p>
+
+      </ion-col>
+      <ion-col col-9 style="text-align: left;padding: 0px;">
+        <p>{{ item.correo }}</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-6>
+        <button style="font-weight: 300;background-image: url(assets/imgs/prototipo2.png); color: #eeeeee;  background-size: cover; text-transform: none;" ion-button block large color="light" (tap)="llamar(item.movil)">
+          <ion-icon name="call" style="margin-right: 10px;"></ion-icon>Llamar
+        </button>
+      </ion-col>
+      <ion-col col-6>
+        <button ion-button block large style="font-weight: 300; text-transform: none;" (click)="cotizar()" color="danger">Pedir
+          cotización</button>
+      </ion-col>
+    </ion-row>
+  </div>
+
+
+
+</ion-content>

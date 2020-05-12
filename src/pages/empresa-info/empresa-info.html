@@ -1,0 +1,147 @@
+<ion-header style="background-color: white;">
+
+  <ion-navbar transparent style="margin-top: 20px; background-color: white;">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title style="font-weight: 400;">
+      <strong style="font-size: 17px; color: #000;">GobAmigo,</strong><strong
+        style="font-weight: 300; font-size: 17px; color: #3a3939;"> Info empresa </strong>
+    </ion-title>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <br>
+  <div id="img_empresa">
+    <img src="assets/imgs/foto_empresa.png" *ngIf="!img_empresa" alt=""
+      style="width: 120px; object-fit:scale-down; border-radius: 75px; border: 3px dashed #0C71D9;">
+    <img src="{{ img_empresa }}" *ngIf="img_empresa" alt=""
+      style="width: 120px; object-fit:cover; border-radius: 75px;">
+    <button class="upload" (tap)="getPictureGallery()" ion-fab mini>
+      <ion-icon style="color: #fff;" name="camera"></ion-icon>
+    </button>
+  </div>
+  <form [formGroup]="myForm" (ngSubmit)="crear_empresa()" novalidate>
+    <ion-list>
+      <ion-item>
+        <ion-label style="color: #0935AE;" stacked>Correo</ion-label>
+        <ion-input formControlName="correo" [(ngModel)]="correo" type="text"  disabled></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label style="color: #0935AE;" stacked>Cédula/RUC</ion-label>
+        <ion-input [(ngModel)]='identificacion' formControlName="identificacion" type="number" disabled>
+        </ion-input>
+      </ion-item>
+      <ion-item *ngIf="myForm.get('identificacion').errors && myForm.get('identificacion').dirty" no-lines>
+        <p style="font-size: 10px;" color="danger" ion-text *ngIf="myForm.get('identificacion').hasError('required')">
+          Campo requerido, ingrese su
+          CI o RUC</p>
+        <p style="font-size: 10px;" color="danger" ion-text *ngIf="myForm.get('identificacion').hasError('minlength')">
+          Mínimo 10 dígitos</p>
+        <p style="font-size: 10px;" color="danger" ion-text *ngIf="myForm.get('identificacion').hasError('maxlength')">
+          Maximo 13 dígitos</p>
+      </ion-item>
+      <ion-item>
+        <ion-label style="color: #0935AE;" stacked>Dirección empresa</ion-label>
+        <ion-input [(ngModel)]='geoAddress' formControlName="geoAddress" type="text" placeholder="" disabled>
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label style="color: #0935AE;" stacked>Nombre empresa</ion-label>
+        <ion-input [(ngModel)]='nombre_negocio' formControlName="nombre_negocio" type="text" placeholder=""></ion-input>
+      </ion-item>
+      <ion-item *ngIf="myForm.get('nombre_negocio').errors && myForm.get('nombre_negocio').dirty" no-lines>
+        <p style="font-size: 10px;" color="danger" ion-text *ngIf="myForm.get('nombre_negocio').hasError('required')">
+          Campo requerido, ingrese el
+          nombre de su negocio</p>
+      </ion-item>
+
+      <ion-item>
+        <ion-label style="color: #0935AE;" stacked>Slogan empresa</ion-label>
+        <ion-input [(ngModel)]='slogan' formControlName="slogan" type="text" placeholder=""></ion-input>
+      </ion-item>
+      <ion-item *ngIf="myForm.get('slogan').errors && myForm.get('slogan').dirty" no-lines>
+        <p style="font-size: 10px;" color="danger" ion-text *ngIf="myForm.get('slogan').hasError('required')">Campo
+          requerido, ingrese el slogan
+          de su negocio</p>
+      </ion-item>
+
+      
+      <ion-item>
+        <ion-label style="color: #0935AE;" stacked>Categoría</ion-label>
+        <ion-select formControlName="idcategoria" [(ngModel)]="idcategoria">
+          <ion-option *ngFor="let item of categorias" value="{{ item.idcategoria_prod }}">{{ item.nombre_categoria }}
+          </ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label style="color: #0935AE;" stacked>Productos</ion-label>
+        <ion-textarea [(ngModel)]='productos' formControlName="productos"></ion-textarea>
+      </ion-item>
+      <ion-item *ngIf="myForm.get('productos').errors && myForm.get('productos').dirty" no-lines>
+        <p color="danger" ion-text *ngIf="myForm.get('productos').hasError('required')">Campo requerido, ingrese los
+          productos que oferta</p>
+      </ion-item>
+
+      <ion-item>
+        <ion-label style="color: #0935AE;" stacked>Ciudad</ion-label>
+        <ion-select  formControlName="idciudad" [(ngModel)]="idciudad" disabled>
+          <ion-option *ngFor="let item of ciudades" value="{{ item.idcatalogo }}">{{ item.nombre }}</ion-option>
+          <!-- <ion-option value="2">Quito</ion-option>
+          <ion-option value="3">Santo Domingo</ion-option> -->
+        </ion-select>
+      </ion-item>
+      <br>
+      <div style="width: 100%; text-align: center; margin-top: 10px; font-weight: 700; color: #0935AE;">---- <strong>Horarios de atención</strong> ----</div>
+      <ion-item>
+        <ion-label style="color: #0935AE;" stacked>¿Que días atiendes?</ion-label>
+        <ion-select formControlName="dias_atencion" [(ngModel)]="dias_atencion">
+          <ion-option value="Lunes-Viernes">Lunes a Viernes</ion-option>
+          <ion-option value="Lunes-Sabado">Lunes a Sabado</ion-option>
+          <ion-option value="Lunes-Domingo">Lunes a Domingo</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item *ngIf="myForm.get('dias_atencion').errors && myForm.get('dias_atencion').dirty" no-lines>
+        <p color="danger" ion-text *ngIf="myForm.get('dias_atencion').hasError('required')">Selecciona una opción</p>
+      </ion-item>
+      <ion-item>
+        <ion-label style="color: #0935AE;">Hora de apertura</ion-label>
+        <ion-datetime formControlName="hora_apertura" displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="hora_apertura"></ion-datetime>
+      </ion-item>
+      <ion-item *ngIf="myForm.get('hora_apertura').errors && myForm.get('hora_apertura').dirty" no-lines>
+        <p color="danger" ion-text *ngIf="myForm.get('hora_apertura').hasError('required')">Campo requerido</p>
+      </ion-item>
+
+      <ion-item>
+        <ion-label style="color: #0935AE;">Hora de cierre</ion-label>
+        <ion-datetime formControlName="hora_cierre" displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="hora_cierre"></ion-datetime>
+      </ion-item>
+      <ion-item *ngIf="myForm.get('hora_apertura').errors && myForm.get('hora_apertura').dirty" no-lines>
+        <p color="danger" ion-text *ngIf="myForm.get('hora_apertura').hasError('required')">Campo requerido</p>
+      </ion-item>
+      <br>
+      <ion-item>
+        <ion-label style="color: #0935AE;" stacked>¿Tu empresa realiza entregas a domicilio?</ion-label>
+        <ion-select formControlName="a_domicilio" [(ngModel)]="a_domicilio">
+          <ion-option value="S">Sí
+          </ion-option>
+          <ion-option value="N">No
+          </ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <div padding>
+      <button ion-button block large
+        style="font-weight: 300;background-image: url(assets/imgs/prototipo2.png);  background-size: cover;"
+        type="submit" >Guardar</button>
+    </div>
+  </form>
+
+</ion-content>
+

@@ -1,0 +1,28 @@
+page-crear-oferta {
+    ion-icon{
+        color: #fff;
+    }
+    #img_empresa{
+        width: 100%;
+        text-align: center;
+        position: relative;
+    }
+
+    #img_empresa img{
+        width: 120px;
+        height: 120px;
+        border-radius: 5px;
+        object-fit: cover;
+        
+    }
+   p{
+        font-size: 9px;
+    }
+
+
+    .upload{
+        position: absolute;
+        top: 60%;
+        left: 60%;
+    }
+}

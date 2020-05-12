@@ -1,0 +1,30 @@
+<ion-header no-border style="background-image: url('assets/imgs/prototipo2.png'); background-size: cover;">
+  <ion-navbar transparent style="margin-top: 20px;">
+    <ion-title style="font-weight: 400;">
+      <strong style="font-size: 17px; color: #fff;">A 2km de tí</strong><strong
+        style="font-weight: 300; font-size: 17px; color: #efefef;"> </strong>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content style="background-image: url('assets/imgs/prototipo2.png'); background-size: cover;">
+  <ion-searchbar placeholder="Buscar por productos" [(ngModel)]="searchTerm" (ionInput)="setFilteredItems()"></ion-searchbar>
+<ion-row>
+  <ion-col col-6 *ngFor="let item of lugares">
+    <ion-card style="border-radius: 15px; height: 180px;" (click)="proveedor(item.idusuario, item.correo)"> 
+      <img class="imagen-menu" *ngIf="item.img_empresa" src="https://g-kaipi.cloud/GobiernoAmigoMovil/public{{ item.img_empresa }}" style="width: 100%; height: 120px; object-fit: cover;" />
+      <ion-card-content>
+        <p style="text-align: left; font-size: 11px;"><strong>{{ item.nombre_negocio }}</strong></p>
+        <p style="text-align: left; font-size: 10px; color: #0935AE;">{{ item.categoria | uppercase }}</p>
+        <!-- <ion-badge >
+          {{ item.registros }} recomendados
+        </ion-badge> -->
+        
+      </ion-card-content>
+    </ion-card>
+
+    <!--  -->
+  </ion-col>
+</ion-row>
+</ion-content>

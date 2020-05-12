@@ -1,0 +1,30 @@
+<ion-header no-border style="background-image: url('assets/imgs/prototipo2.png'); background-size: cover;">
+  <ion-navbar transparent style="margin-top: 20px;">
+    <ion-title style="font-weight: 400;">
+      <strong style="font-size: 17px; color: #fff;">GobAmigo,</strong><strong
+        style="font-weight: 300; font-size: 17px; color: #efefef;"> Categorias </strong>
+    </ion-title>
+  </ion-navbar>
+  <ion-searchbar placeholder="Buscar" [(ngModel)]="searchTerm" (ionInput)="setFilteredItems()"></ion-searchbar>
+</ion-header>
+
+
+<ion-content>
+  <div>
+    <ion-row>
+      <ion-col col-12 *ngFor="let item of categorias" style="padding: 0px">
+        <ion-card style="border-radius: 5px; text-align: center; border: none !important;"
+          (tap)="proveedores(item.idcategoria_prod)">
+          <img class="image" *ngIf="item.fondo" src="https://g-kaipi.cloud/GobiernoAmigoMovil/public/{{ item.fondo }}"
+            alt="">
+          <img class="no_image" *ngIf="!item.fondo" src="assets/imgs/no-image-found.png" alt="">
+          <h2><strong style="font-size: 20px; color: #fff; ">{{ item.nombre_categoria }}</strong></h2>
+          <div class="num">
+            <h3>{{ item.cantidad }} proveedores</h3>
+          </div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </div>
+
+</ion-content>

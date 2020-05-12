@@ -1,0 +1,85 @@
+<ion-header no-border style="background-image: url('assets/imgs/prototipo2.png'); background-size: cover;">
+  <ion-navbar transparent style="margin-top: 20px;">
+    <ion-title style="font-weight: 400;">
+      <strong style="font-size: 17px; color: #fff;">SEGUIMIENTO DE INCIDENCIAS</strong><strong
+        style="font-weight: 300; font-size: 17px; color: #efefef;"></strong>
+    </ion-title>
+  </ion-navbar>
+  <!-- <ion-searchbar placeholder="Buscar" ></ion-searchbar> -->
+</ion-header>
+
+
+<ion-content style="background-image: url('assets/imgs/prototipo2.png'); background-size: cover;">
+  <div *ngFor="let item of denuncias">
+    <div style="margin: 15px; margin-left: 30px;">
+      <div style="width: 100%; height: 250px; border-left: whitesmoke solid 4px;">
+        <button ion-button color="light"
+          style="width: 50px; height: 50px; border-radius: 50%;  position: relative;left: -30px;top: -10px; background: linear-gradient(to right, #11998e, #38ef7d);color: white; font-size: 1.5em;"><b>1</b></button>
+        <!-- <div> -->
+        <ion-card style="height: 200px; background-color:  #e8eaf6; position: relative; left:10px;top: -30px; " padding>
+          <ion-badge color="secondary">ENVIADA</ion-badge>
+          <ion-row>
+            <ion-col col-8>
+              <p><strong>Tipo: </strong>{{item.nombre_tipo}}</p>
+              <p><strong>Categoría: </strong>{{item.nombre_categoria}}</p>
+              <p><strong>Fecha: </strong>{{item.fecha_denuncia}}</p>
+              <p><strong>Detalle: </strong>{{item.detalle_denuncia}}</p>
+              <br>
+              <strong style="color:rgb(54, 219, 95) ;" *ngIf="item.estado_denuncia == 'E'">Incidencia enviado exitosamente </strong>
+              <strong style="color:rgb(219, 106, 54) ;" *ngIf="item.estado_denuncia == 'I'">Incidencia no aceptada </strong>
+            </ion-col>
+            <ion-col col-4>
+              <img src="https://www.g-kaipi.cloud/GobiernoAmigoMovil/public{{item.url_foto_denuncia}}" (click)="viewImage(item.url_foto_denuncia)"
+                >
+            </ion-col>
+          </ion-row>
+          
+        </ion-card>
+      </div>
+
+      <div style="width: 100%; height: 250px; border-left: whitesmoke solid 4px;">
+        <button ion-button color="light"
+          style="width: 50px; height: 50px; border-radius: 50%;  position: relative;left: -30px;top: -10px; background: linear-gradient(to right, #fc4a1a, #f7b733);color: white; font-size: 1.5em;"><b>2</b></button>
+
+        <ion-card style="height: 200px; background-color:  #e8eaf6; position: relative; left:10px;top: -30px; " padding>
+          <ion-badge *ngIf="item.fecha_asigna_denuncia" color="asiganada">ASIGNADA</ion-badge>
+          <ion-row>
+            <ion-col col-12>
+              <!-- <p *ngIf="item.fecha_asigna_denuncia"><strong>Funcionario asiganado: </strong>{{item.id_usuario_asigna_denuncia}}</p> -->
+              <p *ngIf="item.fecha_asigna_denuncia"><strong>Fecha de  asignación: </strong>{{item.fecha_asigna_denuncia}}</p>
+              <p *ngIf="item.fecha_asigna_denuncia"><strong>Novedad: </strong>Su incidencia fué aceptada y se dará atención con la mayor brevedad posible</p>
+              <br>
+              <strong style="color:rgb(219, 161, 54) ;" *ngIf="item.estado_denuncia == 'I'">Incidencia aceptada y en ejecución </strong>
+            </ion-col>
+          </ion-row>
+
+        </ion-card>
+
+      </div>
+      <div  style="width: 100%; height: 250px; border-left: whitesmoke solid 4px;">
+        <button ion-button color="light"
+          style="width: 50px; height: 50px; border-radius: 50%;  position: relative;left: -30px;top: -10px; background: linear-gradient(to right, #cb2d3e, #ef473a);color: white; font-size: 1.5em;"><b>3</b></button>
+        <button ion-button color="light"
+          style="width: 50px; height: 50px; border-radius: 50%;  position: relative;left: -85px;top: 245px; background: linear-gradient(to right, #cb2d3e, #ef473a);color: white; font-size: 1.5em;"><b>
+            <ion-icon name="checkmark"></ion-icon>
+          </b></button>
+        <ion-card style="height: 200px; background-color:  #e8eaf6; position: relative; left:10px;top: -30px; " padding>
+          <ion-badge color="danger" *ngIf="item.fecha_finaliza_denuncia" >FINALIZADA</ion-badge>
+          <ion-col col-12>
+            <p *ngIf="item.fecha_finaliza_denuncia"><strong>Fecha de finalización: </strong>{{item.fecha_finaliza_denuncia}}</p>
+            <p *ngIf="item.fecha_finaliza_denuncia"><strong>Novedad: </strong>{{item.novedad_denuncia}}</p>
+            <br>
+            <strong style="color:rgb(219, 79, 54) ;" *ngIf="item.estado_denuncia == 'F'">Incidencia ejecutada y finalizada </strong>
+          </ion-col>
+          <div *ngIf="item.fecha_finaliza_denuncia" style="width: 48px; position: absolute; left: 82%; top: 70%;">
+            <!-- <qr-code value="FIRMADO POR: ELIANA ISABEL DURAN GRANDA + '<br>'+ RAZON" background='#e8eaf6' size='48'></qr-code> -->
+            <qr-code value="Id_incidencia: {{item.id_denuncia}}\nCI Usuario: {{item.identificacion_usuario_denuncia}}\nTipo incidencia: {{item.nombre_tipo}}\nFecha de creacion: {{item.fecha_finaliza_denuncia}}" background='#e8eaf6' size='48'></qr-code>
+        </div>
+        </ion-card>
+
+      </div>
+    </div>
+
+  </div>
+
+</ion-content>

@@ -1,0 +1,28 @@
+page-update-foto-usuario {
+    ion-icon{
+        color: #000;
+    }
+    #img_empresa{
+        width: 100%;
+        text-align: center;
+        position: relative;
+    }
+
+    #img_empresa img{
+        width: 200px;
+        height: 200px;
+        border-radius: 60px;
+        object-fit: cover;
+        
+    }
+   p{
+        font-size: 9px;
+    }
+
+
+    .upload{
+        position: absolute;
+        top: 55%;
+        left: 67%;
+    }
+}
