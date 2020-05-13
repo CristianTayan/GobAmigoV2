@@ -2,44 +2,71 @@
   <div #map id="map" style="width: 100%; height: 100%; position: relative;">
     <div class="explorar" (click)="VerTodos()">
       <ion-icon style="color: #fff; margin-left: -5px; margin-top: 15px;" name="pin"></ion-icon>
-      <p>Explorar</p>
+      <p>EXPLORAR</p>
     </div>
 
     <div class="btn-menu" style="text-align: left; " menuToggle>
-      <ion-icon class="img-izquierda" style="font-size: 30px; margin-left: 20px; margin-top: 10px; color: #1a237e;" name="menu"></ion-icon>
+      <ion-icon class="img-izquierda" style="font-size: 30px; margin-left: 20px; margin-top: 10px; color: #1a237e;"
+        name="menu"></ion-icon>
     </div>
 
     <!-- <div class="btn-superior-derecha-gad" style="text-align: center;">
       <p style="text-transform: uppercase; margin-top: 6px; color: #1a237e; font-weight: 600; font-size: 18px;">{{ gad }}</p>
     </div> -->
-    <div class="btn-superior-derecha-foto" style="text-align: left;;"  >
-      <img class="img-derecha-foto" src="assets/imgs/logo_home.png"  style="width: 80px; height: 80px; border-radius: 40px; object-fit: cover; box-shadow: -1px 3px 5px 0px rgba(0, 0, 0, 0.75);" alt="">
+    <div class="btn-superior-derecha-foto" style="text-align: left;;">
+      <img class="img-derecha-foto" src="assets/imgs/logo_home.png"
+        style="width: 80px; height: 80px; border-radius: 40px; object-fit: cover; box-shadow: -1px 3px 5px 0px rgba(0, 0, 0, 0.75);"
+        alt="">
     </div>
 
     <!-- <ion-fab class="btn-superior-derecha-foto">
     </ion-fab> -->
     <ion-fab class="btn-superior-derecha-share">
-      <button ion-fab mini color="primary"><ion-icon name="share" style=" margin-top: 0px;"></ion-icon></button>
+      <button ion-fab mini color="primary">
+        <ion-icon name="share" style=" margin-top: 0px;color: white;"></ion-icon>
+      </button>
       <ion-fab-list side="right">
-        <button ion-fab (tap)="Share()" style="background-color: rgb(46, 34, 116);"><ion-icon name="logo-facebook" style=" margin-top: 0px;"></ion-icon></button>
-        <button ion-fab (tap)="whatsappShare()" style="background-color: rgb(27, 146, 33);"><ion-icon name="logo-whatsapp" style=" margin-top: 0px;"></ion-icon></button>
+        <button ion-fab (tap)="Share()" style="background-color: rgb(46, 34, 116);">
+          <ion-icon  name="logo-facebook" style=" margin-top: 0px; color: white;"></ion-icon>
+        </button>
+        <button ion-fab (tap)="whatsappShare()" style="background-color: rgb(27, 146, 33);">
+          <ion-icon  name="logo-whatsapp" style=" margin-top: 0px; color: white;"></ion-icon>
+        </button>
       </ion-fab-list>
     </ion-fab>
 
     <ion-fab class="btn-superior-derecha-location">
-      <button ion-fab mini color="secondary" (click)="negocios_mapa();"><ion-icon name="locate" style=" margin-top: 0px;"></ion-icon></button>
+      <button ion-fab mini color="secondary" (click)="negocios_mapa();">
+        <ion-icon  name="locate" style=" margin-top: 0px;color: white;"></ion-icon>
+      </button>
     </ion-fab>
-    <ion-badge *ngIf="nro_ofertas != 0" style="border-radius: 15px; background-color: #f50057;">{{ nro_ofertas }}</ion-badge>
-    <ion-badge *ngIf="nro_empresas != 0" class="badge-empresas" style="border-radius: 15px; background-color: #f50057;">{{ nro_empresas }}</ion-badge>
-    <div class="btn-superior-izquierda" style="text-align: right;" (tap)="servicios()" >
+    <ion-badge *ngIf="nro_ofertas != 0" style="border-radius: 15px; background-color: #f50057;">{{ nro_ofertas }}
+    </ion-badge>
+    <ion-badge *ngIf="nro_empresas != 0" class="badge-empresas" style="border-radius: 15px; background-color: #f50057;">
+      {{ nro_empresas }}</ion-badge>
+    <div class="btn-superior-izquierda" style="text-align: right;" (tap)="servicios()">
       <img class="img-izquierda" src="assets/imgs/comunidad_icon.png" alt="">
     </div>
-    <div class="btn-media-izquierda" style="text-align: right;" (tap)="incidencias()" >
-      <img class="img-izquierda" src="assets/imgs/denuncia.png"  alt="">
+    <div class="btn-media-izquierda" style="text-align: right;" (tap)="incidencias()">
+      <img class="img-izquierda" src="assets/imgs/denuncia.png" alt="">
     </div>
-    <div class="btn-inferior-izquierda" style="text-align: right" (tap)="llamar_emergencia()" >
+    <!-- <div class="btn-inferior-izquierda" style="text-align: right" (tap)="llamar_emergencia()">
       <img class="img-izquierda" src="assets/imgs/emergencia.png" alt="">
-    </div>
+    </div> -->
+    <ion-fab class="btn-inferior-izquierda">
+      <button ion-fab style="width: 90px; height: 90px; margin-top: -10px;
+      margin-left: 5px; background-color: transparent !important; color: #488aff; box-shadow: none;">
+        <img class="img-izquierda" src="assets/imgs/emergencia.png" alt="">
+      </button>
+      <ion-fab-list side="top">
+        <button color="primary" (click)="llamar_emergencia()" style="width: 170px;height: 40px;margin-top: 15px;text-transform: none;font-weight: 100; font-size: 12px; " ion-button large >
+         <p style="text-transform: none;font-weight: 100;"> ECU 911</p>
+        </button>
+        <button  style="background-color: rgb(46, 34, 116); width: 170px; height: 40px; text-transform: none; font-size: 12px; font-weight: 200;" (click)="llamar_emergencia2()" ion-button large>
+          <p style="text-transform: none; font-weight: 100;">COVID 19</p>
+        </button>
+      </ion-fab-list>
+    </ion-fab>
 
     <div class="btn-inferior-derecha" (tap)="favoritos()">
       <img class="img-derecha" src="assets/imgs/emk_favorito.png" alt="">
@@ -50,7 +77,7 @@
     <div class="btn-superior-derecha" style="text-align: left;" (click)="ofertas()">
       <img class="img-derecha" src="assets/imgs/emk_cotizar.png" alt="">
     </div>
-    
+
   </div>
 
 </ion-content>

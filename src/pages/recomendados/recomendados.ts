@@ -2,15 +2,9 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { UsuarioProvider } from '../../providers/usuario/usuario';
 import { StatusBar } from '@ionic-native/status-bar';
-import { GoogleMap } from '@ionic-native/google-maps';
-import { Geolocation } from '@ionic-native/geolocation';
+import { Geolocation, Geoposition } from '@ionic-native/geolocation';
 
-/**
- * Generated class for the RecomendadosPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 
 @IonicPage()
 @Component({
@@ -18,11 +12,8 @@ import { Geolocation } from '@ionic-native/geolocation';
   templateUrl: 'recomendados.html',
 })
 export class RecomendadosPage {
-  map: GoogleMap;
   recomendados;
   lugares;
-  coordenadax;
-  coordenaday;
   searchTerm : any="";
   constructor(public navCtrl: NavController, public navParams: NavParams, private usuario:UsuarioProvider,
     public loadingCtrl:LoadingController, public statusBar: StatusBar, private geolocation: Geolocation) {
@@ -50,23 +41,17 @@ export class RecomendadosPage {
     .then(data=>{
       this.recomendados = data;
       console.log(this.recomendados);
-      
+
     })
   }
 
-  getPosition(): void{
-    const loader = this.loadingCtrl.create({
-      content: "Obteniendo tu ubicación...",
-      duration: 6000
+  getPosition() {
+    this.geolocation.getCurrentPosition().then((geoposition: Geoposition)=>{
+      // this.lat = geoposition.coords.latitude;
+      // this.lon = geoposition.coords.longitude;
+      this.get_proveedores_cercanos(geoposition.coords.latitude,geoposition.coords.longitude);
+
     });
-    loader.present();
-    this.geolocation.getCurrentPosition().then((resp) => {
-      this.coordenadax = resp.coords.latitude
-      this.coordenaday = resp.coords.longitude
-      this.get_proveedores_cercanos(this.coordenadax, this.coordenaday)
-     }).catch((error) => {
-       console.log('Error getting location', error);
-     });
   }
 
   get_proveedores_cercanos(coordenadax, coordenaday){
@@ -77,7 +62,7 @@ export class RecomendadosPage {
     .then(data=>{
       this.lugares = data;
       console.log(this.lugares);
-      
+
     })
   }
 
@@ -85,7 +70,7 @@ export class RecomendadosPage {
   proveedor(idusuario, correo){
     this.navCtrl.push('ProveedorPage',{
       idusuario: idusuario,
-      correo: correo      
+      correo: correo
     });
   }
 

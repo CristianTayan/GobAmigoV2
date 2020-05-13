@@ -6,7 +6,7 @@ import {
   GoogleMap,
   GoogleMapsEvent,
   LatLng,
-  CameraPosition,
+  GoogleMapOptions,
   MarkerOptions
 } from '@ionic-native/google-maps';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -47,68 +47,61 @@ export class HomePage {
   longitud;
 
   constructor(public navCtrl: NavController, private geolocation: Geolocation, private statusBar: StatusBar, private callNumber: CallNumber,
-    public usuarioProvider: UsuarioProvider, public socialSharing: SocialSharing, private fav: FavoritosProvider, public loadingCtrl:LoadingController
+    public usuarioProvider: UsuarioProvider, public socialSharing: SocialSharing, private fav: FavoritosProvider, public loadingCtrl: LoadingController
   ) {
     this.statusBar.overlaysWebView(true);
     this.statusBar.styleDefault();
 
   }
   ionViewDidLoad() {
-    this.getCurrentPosition()
+    this.loadMap();
+    this.numero_ofertas();
+    this.numero_empresas_nuevas();
   }
 
   ionViewDidEnter() {
     this.statusBar.overlaysWebView(true);
     this.statusBar.styleDefault();
     this.estaLogueado();
-    this.numero_ofertas();
+    // this.numero_ofertas();
   }
 
-  loadMap(){
-    const loader = this.loadingCtrl.create({
-      content: "Cargando mapa...",
-      duration: 4000
-    });
-    loader.present();
-    let element: HTMLElement = document.getElementById('map');
-
-    this.map = GoogleMaps.create(element);
-
-    let position: CameraPosition<LatLng> = {
-      target: new LatLng(this.myPosition.latitude, this.myPosition.longitude),
-      zoom: 15,
-      tilt: 30
+  loadMap() {
+    let mapOptions: GoogleMapOptions = {
+      camera: {
+        target: {
+          lat: 43.0741904, // default location
+          lng: -89.3809802 // default location
+        },
+        zoom: 16,
+        tilt: 30
+      }
     };
+    this.map = GoogleMaps.create("map", mapOptions);
 
-    this.map.one(GoogleMapsEvent.MAP_READY).then(()=>{
-      this.map.moveCamera(position);
-      let markerOptions: MarkerOptions = {
-        position: this.myPosition,
-        title: "Ubicación",
-        icon: 'assets/imgs/marker.png'
-      };
-      this.addMarker(markerOptions);
-      this.markers.forEach(marker=>{
-        this.addMarker(marker);
+    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
+      this.getPosition();
+    });
+
+  }
+  getPosition(): void {
+    this.map.getMyLocation()
+      .then(response => {
+        this.latitud = response.latLng.lat;
+        this.longitud = response.latLng.lng;
+        this.map.moveCamera({
+          target: response.latLng
+        });
+        this.map.addMarker({
+          title: 'My Position',
+          icon: 'blue',
+          animation: 'DROP',
+          position: response.latLng
+        });
+      })
+      .catch(error => {
+        console.log(error);
       });
-      
-    });
-  }
-
-  addMarker(options){
-    let markerOptions: MarkerOptions = {
-      position: new LatLng(options.position.latitude, options.position.longitude),
-      title: options.title,
-      snippet: options.categoria,
-      icon: {
-        url: options.icon,
-        size: {
-          width: 60,
-          height: 60
-        }
-      },
-    };
-    this.map.addMarker(markerOptions);
   }
 
   negocios_mapa() {
@@ -119,34 +112,47 @@ export class HomePage {
       .then(data => {
         this.markers = data;
         console.log(this.markers);
-        this.loadMap();
+
+        let markerOptions: MarkerOptions = {
+          position: this.myPosition,
+          title: "Hola",
+          icon: 'www/assets/imgs/marker-pink.png'
+        };
+
+        this.addMarker(markerOptions);
+
+        this.markers.forEach(marker => {
+          this.addMarker(marker);
+        });
       })
+
   }
 
-
-  getCurrentPosition() {
-    const loader = this.loadingCtrl.create({
-      content: "Obteniendo tu ubicación...",
-      duration: 4000
-    });
-    loader.present();
-    this.geolocation.getCurrentPosition()
-      .then(position => {
-        this.latitud= position.coords.latitude;
-        this.longitud= position.coords.longitude;
-        this.myPosition = {
-          latitude: position.coords.latitude,
-          longitude: position.coords.longitude
+  addMarker(options) {
+    let markerOptions: MarkerOptions = {
+      position: new LatLng(options.position.latitude, options.position.longitude),
+      title: options.title,
+      snippet: options.categoria,
+      icon: {
+        url: options.icon,
+        size: {
+          width: 70,
+          height: 70
         }
-        this.loadMap();
-      })
-      .catch(error => {
-        console.log(error);
-      })
+      },
+    };
+    this.map.addMarker(markerOptions);
   }
+
 
   llamar_emergencia() {
     this.callNumber.callNumber("911", true)
+      .then(res => console.log('Launched dialer!', res))
+      .catch(err => console.log('Error launching dialer', err));
+  }
+
+  llamar_emergencia2() {
+    this.callNumber.callNumber("171", true)
       .then(res => console.log('Launched dialer!', res))
       .catch(err => console.log('Error launching dialer', err));
   }

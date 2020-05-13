@@ -85,7 +85,7 @@ export class CategoriaIncidenciaPage {
   }
 
   cancelar(){
-    this.navCtrl.setRoot('PrincipalPage');
+    this.navCtrl.setRoot('HomePage');
   }
 
 }

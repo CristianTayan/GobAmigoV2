@@ -83,13 +83,13 @@ page-home {
   .btn-superior-derecha-share{
     position: absolute;
     left: 6px;
-    top: 19%;
+    top: 17%;
   }
 
   .btn-superior-derecha-location{
     position: absolute;
     left: 6px;
-    top: 26%;
+    top: 29%;
   }
   .btn-superior-derecha {
     position: absolute;
@@ -179,7 +179,9 @@ page-home {
     margin-top: -7px;
     margin-left: 15px;
   }
-
+  ion-icon {
+    color: black;
+}
   .contmenu {
     position: absolute;
     bottom: 0px;
