@@ -49,7 +49,7 @@
         </ion-input>
       </ion-item> -->
       <ion-item>
-        <ion-label style="color: #0935AE;" stacked>Nombre empresa</ion-label>
+        <ion-label style="color: #0935AE;" stacked>Nombre proveedor</ion-label>
         <ion-input [(ngModel)]='item.nombre_negocio' formControlName="nombre_negocio" type="text" placeholder=""></ion-input>
       </ion-item>
       <ion-item *ngIf="myForm.get('nombre_negocio').errors && myForm.get('nombre_negocio').dirty" no-lines>
@@ -68,7 +68,7 @@
           de su negocio</p>
       </ion-item>
 
-      
+
       <ion-item>
         <ion-label style="color: #0935AE;" stacked>Categoría</ion-label>
         <ion-select formControlName="idcategoria" [(ngModel)]="item.idcategoria_prod">

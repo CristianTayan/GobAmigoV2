@@ -1,0 +1,18 @@
+<ion-header no-border style="background-image: url('assets/imgs/prototipo2.png'); background-size: cover;">
+  <ion-navbar transparent style="margin-top: 20px;">
+    <ion-title style="text-align: right;"> <img src="assets/imgs/logoMunicipalidad.png" alt="" width="100px"></ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content style="background-image: url('assets/imgs/prototipo2.png'); background-size: cover;">
+  <br>
+  <ion-card *ngFor="let item of publicidad" style="border-radius: 12px; opacity: 0.8;">
+    <ion-card-header>
+      <strong style="color: #0935AE;">{{ item.nombre }}</strong>
+    </ion-card-header>
+    <hr style="width: 94%;">
+    <ion-card-content>
+      <div [innerHTML]="item.detalle"></div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -82,8 +82,12 @@ export class HomePage {
     this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
       this.getPosition();
     });
-
   }
+
+  publicidad(){
+    this.navCtrl.push('PublicidadPage');
+  }
+
   getPosition(): void {
     this.map.getMyLocation()
       .then(response => {

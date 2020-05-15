@@ -47,7 +47,7 @@ export class UsuarioProvider {
     );
   }
 
-  
+
 
   async registro(data) {
     const loading = await this.loadingController.create({
@@ -104,7 +104,7 @@ export class UsuarioProvider {
               loading.dismiss();
             }
           )
-        // window.location.reload(); 
+        // window.location.reload();
       }
     );
   }
@@ -169,6 +169,39 @@ export class UsuarioProvider {
             },
             err => {
 
+            }
+          )
+      }
+    );
+  }
+
+  async actualizar_metodo_pago(data) {
+    const loading = await this.loadingController.create({
+      content: 'GobAmigo cargando ...'
+    });
+    await loading.present();
+    return new Promise(
+      resolve => {
+        this.http.post(urlApi + "actualizar_metodo_pago", data)
+          .subscribe(
+            data => {
+              resolve(data);
+              loading.dismiss();
+              const alert = this.alertCtrl.create({
+                title: 'Perfecto',
+                subTitle: 'Se ha actualizado con éxito',
+                buttons: ['OK']
+              });
+              alert.present();
+            },
+            err => {
+              const alert = this.alertCtrl.create({
+                title: 'Error',
+                subTitle: err.error.message,
+                buttons: ['OK']
+              });
+              alert.present();
+              loading.dismiss();
             }
           )
       }
@@ -339,7 +372,7 @@ export class UsuarioProvider {
       }
     );
   }
-  
+
   async get_proveedores_cercanos(data) {
     const loading = await this.loadingController.create({
       content: 'GobAmigo buscando cerca de tí ...',
@@ -372,7 +405,7 @@ export class UsuarioProvider {
   }
 
   filterProveedoresCercanos(searchTerm) {
-    return this.proveedores_cercanos.filter((item) => {    
+    return this.proveedores_cercanos.filter((item) => {
       return item.productos.toLowerCase().includes(searchTerm.toLowerCase());
     });
   }

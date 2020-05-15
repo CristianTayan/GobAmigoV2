@@ -20,9 +20,6 @@ export class MyApp {
   sobre_gob_amigo: any = 'SobreGobAmigoPage';
 
 
-
-
-
   @ViewChild('contenido') menu: NavController;
   foto;
   correo;
@@ -33,24 +30,24 @@ export class MyApp {
   constructor(public platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public menuCtrl: MenuController,public events: Events) {
     platform.ready().then(() => {
       splashScreen.hide();
-      
+
       events.subscribe('user:signedIn', (userEventData) => {
         this.userData = localStorage.getItem('userStorage');
         var usuario = JSON.parse(this.userData);
         for (let item of usuario) {
           this.foto = item.foto;
           this.nombre = item.nombre;
-          this.correo = item.correo;  
-          this.proveedor = item.proveedor;        
-        }     
+          this.correo = item.correo;
+          this.proveedor = item.proveedor;
+        }
        });
 
        events.subscribe('foto:signedIn', (userEventData) => {
-        this.foto = localStorage.getItem('foto');   
+        this.foto = localStorage.getItem('foto');
        });
 
        events.subscribe('nombre:signedIn', (userEventData) => {
-        this.nombre = localStorage.getItem('nombre');   
+        this.nombre = localStorage.getItem('nombre');
        });
     });
     this.foto = localStorage.getItem('foto');
@@ -73,6 +70,6 @@ export class MyApp {
     });
     this.platform.exitApp();
   }
-  
+
 }
 

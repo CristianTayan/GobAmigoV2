@@ -19,10 +19,12 @@
     </ion-card>
   </div>
   <div class="description-card" padding>
-    <h5 style="color: #000; margin-top: 10px;"><strong>{{ item.nombre_negocio }}</strong></h5>
-    <ion-badge  *ngIf="item.a_domicilio == 'S'" >Si realiza entregas a domicilio</ion-badge>
+    <br>
+    <h5 style="color: #000; margin: 0px;"><strong>{{ item.nombre_negocio }}</strong></h5>
+    <ion-badge  *ngIf="item.a_domicilio == 'S'"  >Si realiza entregas a domicilio</ion-badge>
     <!-- <h6 style="color: #1a237e; font-weight: 900;" *ngIf="item.a_domicilio == 'S' ">Hace entregas a domicilio</h6> -->
-    <p style="color: #666;">{{ item.slogan }}</p>
+    <p style="color: #666; margin: 0px;">{{ item.slogan }}</p>
+    <p style="color: #666; margin: 0px;"><strong>Método de pago: </strong> {{ item.categoria }}</p>
 
     <button *ngIf="es_favorito == 'no'" class="float-button" (tap)="like()" ion-fab mini color="light">
       <ion-icon style="color: black;"  name="heart-outline"></ion-icon>

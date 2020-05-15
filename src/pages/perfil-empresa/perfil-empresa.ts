@@ -29,6 +29,7 @@ export class PerfilEmpresaPage {
   hora_apertura;
   hora_cierre;
   a_domicilio;
+  forma_pago;
   constructor(public navCtrl: NavController, public navParams: NavParams, private usuarioProvider: UsuarioProvider, public statusBar: StatusBar) {
   }
 
@@ -51,7 +52,7 @@ export class PerfilEmpresaPage {
     .then(data =>{
       this.dataUsuario = data;
       console.log(this.dataUsuario);
-      
+
       this.asignar_datos_a_variables(this.dataUsuario)
     })
   }
@@ -67,11 +68,16 @@ export class PerfilEmpresaPage {
       this.hora_apertura = item.hora_apertura;
       this.hora_cierre = item.hora_cierre;
       this.nombre_categoria = item.nombre_categoria;
-      this.a_domicilio = item.a_domicilio;      
+      this.a_domicilio = item.a_domicilio;
+      this.forma_pago = item.categoria;
     }
   }
 
   editar_page(){
     this.navCtrl.push('EditarPerfilEmpresaPage');
+  }
+
+  update_metodo(){
+    this.navCtrl.push('UpdateMetodoPage');
   }
 }

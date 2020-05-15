@@ -35,17 +35,17 @@
           <ion-icon style="color: #757575;" name="person"></ion-icon>
         </ion-col>
         <ion-col col-8>
-          Configuración de mi empresa
+          Configuración de proveedor
         </ion-col>
         <ion-col col-3 style="text-align: right;">
           <p style="font-size: 12px;" (tap)="editar_page()">Editar <ion-icon name="create"  style="color: #757575;"></ion-icon></p>
         </ion-col>
       </ion-row>
     </ion-card-header>
-    
+
     <ion-card-content>
       <ion-row>
-        <ion-col col-6 padding><p style="font-size: 11px;">Nombre empresa</p></ion-col>
+        <ion-col col-6 padding><p style="font-size: 11px;">Nombre proveedor</p></ion-col>
         <ion-col col-6 padding><p style="color: #0935AE; font-size: 11px;">{{ nombre_negocio }}</p></ion-col>
         <ion-col col-6 padding><p style="font-size: 11px;">Categoría</p></ion-col>
         <ion-col col-6 padding><p style="color: #0935AE; font-size: 11px;">{{ nombre_categoria }}</p></ion-col>
@@ -60,50 +60,16 @@
         <ion-col col-6 padding><p style="font-size: 11px;">Hora apertura</p></ion-col>
         <ion-col col-6 padding><p style="color: #0935AE; font-size: 11px;">{{ hora_apertura }}</p></ion-col>
         <ion-col col-6 padding><p style="font-size: 11px;">Hora cierre</p></ion-col>
-        <ion-col col-6 padding><p style="color: #0935AE; font-size: 11px;">{{ hora_apertura }}</p></ion-col>
+        <ion-col col-6 padding><p style="color: #0935AE; font-size: 11px;">{{ hora_cierre }}</p></ion-col>
         <ion-col col-6 padding><p style="font-size: 11px;">Entregas a domicilio</p></ion-col>
         <ion-col col-6 padding>
           <p style="color: #0935AE; font-size: 11px;" *ngIf="a_domicilio == 'S'">Sí</p>
           <p style="color: #0935AE; font-size: 11px;" *ngIf="a_domicilio == 'N'">No</p>
         </ion-col>
-
-        <!-- <ion-col col-6 padding>
-          <p style="font-size: 11px;">Nombre empresa</p>
-
-          <br>
-          <p style="font-size: 11px;">Categoría</p>
-          <br>
-          <p style="font-size: 11px;">Slogan</p>
-          <br><br><br>
-          <p style="font-size: 11px;">Productos</p>
-          <br>
-          <p style="font-size: 11px;">Días de atencion</p>
-          <br>
-          <p style="font-size: 11px;">Hora apertura</p>
-          <br>
-          <p style="font-size: 11px;">Hora cierre</p>
-          <br>
-          <p style="font-size: 11px;">Entregas a domicilio</p>
+        <ion-col col-5 padding><p style="font-size: 11px;">Metodos de pago</p></ion-col>
+        <ion-col col-7 padding>
+          <p style="color: #0935AE; font-size: 11px;">{{ forma_pago }} <ion-icon (click)="update_metodo()" name="create" style="margin-left: 5px; color: gray;"></ion-icon></p>
         </ion-col>
-        <ion-col col-6 padding>
-          <p style="color: #0935AE; font-size: 11px;">{{ nombre_negocio }}</p>
-          <br>
-          <p style="color: #0935AE; font-size: 11px;">{{ nombre_categoria }}</p>
-          <br>
-          <p style="color: #0935AE; font-size: 11px;">{{ slogan }}</p>
-          <br>
-          <p style="color: #0935AE; font-size: 11px;">{{ productos }}</p>
-          <br>
-          <p style="color: #0935AE; font-size: 11px;">{{ dias_atencion }}</p>
-          <br>
-          <p style="color: #0935AE; font-size: 11px;">{{ hora_apertura }}</p>
-          <br>
-          <p style="color: #0935AE; font-size: 11px;">{{ hora_cierre }}</p>
-          <br>
-          
-          <p style="color: #0935AE; font-size: 11px;" *ngIf="a_domicilio == 'S'">Sí</p>
-          <p style="color: #0935AE; font-size: 11px;" *ngIf="a_domicilio == 'N'">No</p>
-        </ion-col> -->
       </ion-row>
     </ion-card-content>
   </ion-card>

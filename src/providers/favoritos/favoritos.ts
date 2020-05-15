@@ -30,14 +30,30 @@ export class FavoritosProvider {
               title: 'Error',
               subTitle: err.error.message,
               buttons: ['OK']
-            }); 
-            alert.present(); 
+            });
+            alert.present();
             loading.dismiss();
           }
         )
       }
-    ); 
+    );
   }
+
+  async publicidad(){
+    return new Promise(
+      resolve=>{
+        this.http.get(urlApi+"publicidad")
+        .subscribe(
+          data  =>{
+            resolve(data);
+          },
+          err=>{
+          }
+        )
+      }
+    );
+  }
+
 
   async get_ofertas_num(){
     return new Promise(
@@ -51,7 +67,7 @@ export class FavoritosProvider {
           }
         )
       }
-    ); 
+    );
   }
 
   async get_empresas_nuevas(){
@@ -66,7 +82,7 @@ export class FavoritosProvider {
           }
         )
       }
-    ); 
+    );
   }
 
   like(data){
@@ -87,7 +103,7 @@ export class FavoritosProvider {
               title: 'Error',
               subTitle: 'Hubo algún problema, no se agregó a tus favoritos',
               buttons: ['OK']
-            }); 
+            });
             alert.present();
           }
         )
@@ -113,7 +129,7 @@ export class FavoritosProvider {
               title: 'Error',
               subTitle: 'Hubo algún problema, no se agregó a tus favoritos',
               buttons: ['OK']
-            }); 
+            });
             alert.present();
           }
         )
@@ -131,7 +147,7 @@ export class FavoritosProvider {
           },
           err=>{
             console.log(err);
-            
+
           }
         )
       }

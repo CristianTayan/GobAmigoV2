@@ -46,12 +46,12 @@
           Maximo 13 dígitos</p>
       </ion-item>
       <ion-item>
-        <ion-label style="color: #0935AE;" stacked>Dirección empresa</ion-label>
+        <ion-label style="color: #0935AE;" stacked>Dirección proveedor</ion-label>
         <ion-input [(ngModel)]='geoAddress' formControlName="geoAddress" type="text" placeholder="" disabled>
         </ion-input>
       </ion-item>
       <ion-item>
-        <ion-label style="color: #0935AE;" stacked>Nombre empresa</ion-label>
+        <ion-label style="color: #0935AE;" stacked>Nombre proveedor</ion-label>
         <ion-input [(ngModel)]='nombre_negocio' formControlName="nombre_negocio" type="text" placeholder=""></ion-input>
       </ion-item>
       <ion-item *ngIf="myForm.get('nombre_negocio').errors && myForm.get('nombre_negocio').dirty" no-lines>
@@ -61,7 +61,7 @@
       </ion-item>
 
       <ion-item>
-        <ion-label style="color: #0935AE;" stacked>Slogan empresa</ion-label>
+        <ion-label style="color: #0935AE;" stacked>Slogan proveedor</ion-label>
         <ion-input [(ngModel)]='slogan' formControlName="slogan" type="text" placeholder=""></ion-input>
       </ion-item>
       <ion-item *ngIf="myForm.get('slogan').errors && myForm.get('slogan').dirty" no-lines>
@@ -70,7 +70,7 @@
           de su negocio</p>
       </ion-item>
 
-      
+
       <ion-item>
         <ion-label style="color: #0935AE;" stacked>Categoría</ion-label>
         <ion-select formControlName="idcategoria" [(ngModel)]="idcategoria">

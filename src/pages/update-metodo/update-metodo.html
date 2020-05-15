@@ -1,0 +1,45 @@
+<ion-header style="background-color: white;">
+
+  <ion-navbar transparent style="margin-top: 20px; background-color: white;">
+    <button ion-button menuToggle>
+      <ion-icon style="color: black;"  name="menu"></ion-icon>
+    </button>
+    <ion-title style="font-weight: 400;">
+      <strong style="font-size: 17px; color: #000;">Actualizar</strong><strong
+        style="font-weight: 300; font-size: 17px; color: #3a3939;"> método de pago </strong>
+    </ion-title>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list radio-group [(ngModel)]="forma_pago">
+    <ion-list-header>
+      Seleccione el método de pago que usa
+    </ion-list-header>
+
+    <ion-item>
+      <ion-label><ion-icon name="ios-cash" style="margin-right: 10px;"></ion-icon>Efectivo</ion-label>
+      <ion-radio value="Efectivo"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label><ion-icon name="ios-code-download" style="margin-right: 10px;"></ion-icon>Trasferencia/Deposito</ion-label>
+      <ion-radio value="Trasferencia/Deposito"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label><ion-icon name="ios-card" style="margin-right: 10px;"></ion-icon>Tarjeta de Credito</ion-label>
+      <ion-radio  value="Tarjeta de Credito"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label><ion-icon name="ios-closed-captioning" style="margin-right: 10px;"></ion-icon>Pago en línea</ion-label>
+      <ion-radio value="Pago en línea"></ion-radio>
+    </ion-item>
+
+  </ion-list>
+  <button ion-button block (click)="actualizar()" >Actualizar</button>
+</ion-content>
