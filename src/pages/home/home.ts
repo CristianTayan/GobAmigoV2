@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, LoadingController } from 'ionic-angular';
-import { Geolocation } from '@ionic-native/geolocation';
 import {
   GoogleMaps,
   GoogleMap,
@@ -46,7 +45,7 @@ export class HomePage {
   latitud;
   longitud;
 
-  constructor(public navCtrl: NavController, private geolocation: Geolocation, private statusBar: StatusBar, private callNumber: CallNumber,
+  constructor(public navCtrl: NavController, private statusBar: StatusBar, private callNumber: CallNumber,
     public usuarioProvider: UsuarioProvider, public socialSharing: SocialSharing, private fav: FavoritosProvider, public loadingCtrl: LoadingController
   ) {
     this.statusBar.overlaysWebView(true);

@@ -130,7 +130,7 @@ export class ProveedorPage {
   }
 
   sendmessage(numero) {
-    var menssage = this.mensaje.split(" ").join("%20");
+    var menssage = 'Hola, este anuncio te envia tu Gad Amigo '+ this.mensaje.split(" ").join("%20");
     let enviar = 'https://api.whatsapp.com/send?phone=' + 593 + numero + '&text=' + menssage;
     this.platform.ready().then(() => {
       let browser = new InAppBrowser();
@@ -154,7 +154,9 @@ export class ProveedorPage {
       .catch(err => console.log('Error launching dialer', err));
   }
 
-  cotizar(){
-    this.navCtrl.push('FormularioPage');
+  cotizar(movil){
+    this.navCtrl.push('FormularioPage',{
+      movil: movil
+    });
   }
 }

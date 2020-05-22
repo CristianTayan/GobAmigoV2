@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { CategoriasProvider } from '../../providers/categorias/categorias';
-import { FavoritosProvider } from '../../providers/favoritos/favoritos';
 import { UsuarioProvider } from '../../providers/usuario/usuario';
 /**
  * Generated class for the TodosPage page.
@@ -80,7 +79,7 @@ export class TodosPage {
   recomendados;
   vistos;
   constructor(public navCtrl: NavController, public navParams: NavParams, private statusBar: StatusBar, private categoriasProvider: CategoriasProvider,
-    private favoritosProvider: FavoritosProvider, private usuario: UsuarioProvider) {
+     private usuario: UsuarioProvider) {
     
   }
 

@@ -3,7 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-import { Facebook } from '@ionic-native/facebook';
+// import { Facebook } from '@ionic-native/facebook';
 import { Camera} from '@ionic-native/camera';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { CallNumber } from '@ionic-native/call-number';
@@ -40,7 +40,7 @@ import { DenunciaProvider } from '../providers/denuncia/denuncia';
     StatusBar,
     Geolocation,
     GoogleMaps,
-    Facebook,
+    // Facebook,
     Camera,
     SplashScreen,
     CallNumber,

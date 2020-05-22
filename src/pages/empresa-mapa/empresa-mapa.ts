@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component} from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import {
   GoogleMaps,
@@ -6,12 +6,10 @@ import {
   GoogleMapsEvent,
   GoogleMapOptions
 } from '@ionic-native/google-maps';
-import { Geolocation, Geoposition } from '@ionic-native/geolocation';
 import { StatusBar } from '@ionic-native/status-bar';
 import { NativeGeocoder, NativeGeocoderOptions, NativeGeocoderReverseResult } from '@ionic-native/native-geocoder';
 
 
-declare var google;
 
 @IonicPage()
 @Component({
@@ -39,7 +37,7 @@ export class EmpresaMapaPage {
     useLocale: true,
     maxResults: 5
   };
-  constructor(public navCtrl: NavController, private googleMaps: GoogleMaps, public navParams: NavParams, private geolocation: Geolocation, private nativeGeocoder: NativeGeocoder,
+  constructor(public navCtrl: NavController, public navParams: NavParams,  private nativeGeocoder: NativeGeocoder,
     private statusBar: StatusBar, public alertCtrl: AlertController) {
     this.statusBar.overlaysWebView(true);
     this.statusBar.styleDefault();

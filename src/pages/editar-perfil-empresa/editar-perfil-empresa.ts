@@ -3,14 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UsuarioProvider } from '../../providers/usuario/usuario';
 import { CategoriasProvider } from '../../providers/categorias/categorias';
-import { Camera, CameraOptions } from '@ionic-native/camera';
 
-/**
- * Generated class for the EditarPerfilEmpresaPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -24,7 +17,7 @@ export class EditarPerfilEmpresaPage {
   img_empresa;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public fb: FormBuilder, 
-              private usuarioProvider:UsuarioProvider, private apiCategoria: CategoriasProvider, private camera: Camera) {
+              private usuarioProvider:UsuarioProvider, private apiCategoria: CategoriasProvider) {
     this.myForm= this.fb.group({
       identificacion: ['',Validators.compose([Validators.required, Validators.minLength(10), Validators.maxLength(13)])],
       geoAddress: ['',Validators.compose([Validators.required])],

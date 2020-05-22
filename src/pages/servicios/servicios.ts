@@ -1,18 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { StatusBar } from '@ionic-native/status-bar';
-import { WebviewPage } from '../webview/webview';
-// import { OrdenanzasMunicipalesPage } from '../ordenanzas-municipales/ordenanzas-municipales';
-// import { ConsutaDeudasPage } from '../consuta-deudas/consuta-deudas';
-// import { PserviciosPage } from '../pservicios/pservicios';
 
-/**
- * Generated class for the ServiciosPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -38,7 +27,7 @@ export class ServiciosPage {
     }
   ]
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private iab: InAppBrowser, private statusBar: StatusBar) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,  private statusBar: StatusBar) {
   }
 
 
@@ -52,19 +41,17 @@ export class ServiciosPage {
     this.statusBar.styleLightContent();
   }
 
-  abrirPagina(url){
-    var options = {
-      location: 'yes',
-      clearcache: 'yes',
-      toolbar: 'no'
-   };
-    const browser = this.iab.create(url, '_self');
-    browser.show();
-  }
-
-  // goToRequisitosTramites(){
-  //   this.navCtrl.push('WebviewPage');
+  // abrirPagina(url){
+  //   var options = {
+  //     location: 'yes',
+  //     clearcache: 'yes',
+  //     toolbar: 'no'
+  //  };
+  //   const browser = this.iab.create(url, '_self');
+  //   browser.show();
   // }
+
+
   goToServicios(){
     this.navCtrl.push('WebviewPage');
   }

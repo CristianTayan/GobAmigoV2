@@ -1,13 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
-// import { CategoriaProvider } from '../../providers/categoria/categoria';
 import { Camera, CameraOptions } from '@ionic-native/camera';
-// import { MisSolicitudesPage } from '../mis-solicitudes/mis-solicitudes';
 import { NativeGeocoderOptions } from '@ionic-native/native-geocoder';
 import { Geolocation } from '@ionic-native/geolocation';
 import { StatusBar } from '@ionic-native/status-bar';
 import { DenunciaProvider } from '../../providers/denuncia/denuncia';
-// import { DenunciaProvider } from '../../providers/denuncia/denuncia';
 
 @IonicPage()
 @Component({

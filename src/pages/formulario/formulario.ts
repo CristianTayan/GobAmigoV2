@@ -24,7 +24,7 @@ texto;
   }
 
   enviar(){
-    var numero = localStorage.getItem('movil');
+    var numero = this.navParams.get('movil');
     var menssage = this.texto.split(" ").join("%20");
     let enviar = 'https://api.whatsapp.com/send?phone=' + 593 + numero + '&text=' + menssage;
     this.platform.ready().then(() => {
